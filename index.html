@@ -58,10 +58,33 @@
           <span class="modulo-flecha">▸</span>
         </div>
         <div class="modulo-detalle">
-          <p>Sismos históricos, zonas sísmicas y fallas geológicas principales.</p>
+          <p>Sismos históricos, zonas de amenaza y fallas geológicas principales.</p>
+
+          <!-- Sublistas por tipo de capa -->
+          <div class="subcapa">
+            <label class="subcapa-cabecera">
+              <input type="checkbox" id="check-sismos" checked>
+              <span>● Sismos históricos</span>
+            </label>
+          </div>
+
+          <div class="subcapa">
+            <label class="subcapa-cabecera">
+              <input type="checkbox" id="check-zonas" checked>
+              <span>▦ Zonas sísmicas</span>
+            </label>
+          </div>
+
+          <div class="subcapa">
+            <label class="subcapa-cabecera">
+              <input type="checkbox" id="check-fallas" checked>
+              <span>╱ Fallas geológicas</span>
+            </label>
+          </div>
+
+          <ul id="lista-sismos" class="lista-elementos"></ul>
         </div>
       </div>
-
       <!-- Módulo Movimientos en Masa -->
       <div class="modulo">
         <div class="modulo-cabecera">

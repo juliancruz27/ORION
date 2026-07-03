@@ -198,6 +198,14 @@ fetch('data/volcanes.geojson')
     });
 
     // Filtro por nivel de alerta
+    // Checkbox para activar/desactivar capa de volcanes
+    document.getElementById('capa-volcanes').addEventListener('change', e => {
+      datos.features.forEach(feature => {
+        const layer = capasVolcanes[feature.properties.nombre];
+        if (e.target.checked) layer.addTo(mapa);
+        else mapa.removeLayer(layer);
+      });
+    });
     document.querySelectorAll('.filtro-btn').forEach(btn => {
       btn.addEventListener('click', () => {
 
@@ -245,3 +253,180 @@ modulos.forEach(modulo => {
     modulo.classList.toggle('abierto');
   });
 });
+// ================================
+// MÓDULO SÍSMICO
+// ================================
+function colorSismico(nivel) {
+  switch (nivel) {
+    case 'alto':  return '#ff4444';
+    case 'medio': return '#ffaa00';
+    case 'bajo':  return '#44aa44';
+    default:      return '#ffffff';
+  }
+}
+
+// Variables para guardar las capas
+let capaSismos = null;
+let capaZonas = null;
+let capaFallas = null;
+
+// ---- SISMOS HISTÓRICOS ----
+fetch('data/sismos.geojson')
+  .then(r => r.json())
+  .then(datos => {
+
+    capaSismos = L.geoJSON(datos, {
+
+      pointToLayer: (feature, latlng) => {
+        const mag = feature.properties.magnitud;
+        return L.circleMarker(latlng, {
+          radius: mag * 4,
+          color: '#ff4444',
+          fillColor: '#ff4444',
+          fillOpacity: 0.3,
+          weight: 1.5
+        });
+      },
+
+      onEachFeature: (feature, layer) => {
+        const p = feature.properties;
+        layer.bindPopup(`
+          <div class="popup-contenido">
+            <h3>${p.nombre}</h3>
+            <p><strong>Fecha:</strong> ${p.fecha}</p>
+            <p><strong>Magnitud:</strong> ${p.magnitud} Mw</p>
+            <p><strong>Ubicación:</strong> ${p.ubicacion}</p>
+            <p><strong>Profundidad:</strong> ${p.profundidad}</p>
+            <p><strong>Víctimas:</strong> ${p.victimas}</p>
+          </div>
+        `);
+      }
+
+    }).addTo(mapa);
+
+    // Lista en el panel
+    const lista = document.getElementById('lista-sismos');
+    datos.features.forEach(feature => {
+      const p = feature.properties;
+      const [lng, lat] = feature.geometry.coordinates;
+
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <span class="elemento-punto" style="background:#ff4444"></span>
+        <span class="elemento-nombre">${p.nombre}</span>
+        <span class="badge-alerta" style="background:rgba(255,68,68,0.15);color:#ff4444">M${p.magnitud}</span>
+      `;
+
+      li.addEventListener('click', () => {
+        document.querySelectorAll('#lista-sismos li').forEach(el => {
+          el.classList.remove('activo');
+        });
+        li.classList.add('activo');
+        mapa.flyTo([lat, lng], 9, { animate: true, duration: 1.5 });
+      });
+
+      lista.appendChild(li);
+    });
+
+    // Checkbox para activar/desactivar
+    document.getElementById('check-sismos').addEventListener('change', e => {
+      if (e.target.checked) capaSismos.addTo(mapa);
+      else mapa.removeLayer(capaSismos);
+    });
+
+  });
+
+
+// ---- ZONAS SÍSMICAS ----
+fetch('data/zonas_sismicas.geojson')
+  .then(r => r.json())
+  .then(datos => {
+
+    capaZonas = L.geoJSON(datos, {
+
+      style: feature => ({
+        color: colorSismico(feature.properties.nivel),
+        weight: 1,
+        opacity: 0.6,
+        fillColor: colorSismico(feature.properties.nivel),
+        fillOpacity: 0.08
+      }),
+
+      onEachFeature: (feature, layer) => {
+        const p = feature.properties;
+        layer.bindPopup(`
+          <div class="popup-contenido">
+            <h3>${p.nombre}</h3>
+            <p><strong>Descripción:</strong> ${p.descripcion}</p>
+            <p><strong>Departamentos:</strong> ${p.departamentos}</p>
+            <p><strong>Fuente:</strong> ${p.fuente}</p>
+          </div>
+        `);
+      }
+
+    }).addTo(mapa);
+
+    // Checkbox para activar/desactivar
+    document.getElementById('check-zonas').addEventListener('change', e => {
+      if (e.target.checked) capaZonas.addTo(mapa);
+      else mapa.removeLayer(capaZonas);
+    });
+
+  });
+
+
+// ---- FALLAS GEOLÓGICAS ----
+fetch('data/fallas.geojson')
+  .then(r => r.json())
+  .then(datos => {
+
+    capaFallas = L.geoJSON(datos, {
+
+      style: {
+        color: '#ff8800',
+        weight: 2,
+        opacity: 0.8,
+        dashArray: '6, 4'
+      },
+
+      onEachFeature: (feature, layer) => {
+        const p = feature.properties;
+        layer.bindPopup(`
+          <div class="popup-contenido">
+            <h3>${p.nombre}</h3>
+            <p><strong>Tipo:</strong> ${p.tipo}</p>
+            <p><strong>Longitud:</strong> ${p.longitud}</p>
+            <p><strong>Descripción:</strong> ${p.descripcion}</p>
+            <p><strong>Departamentos:</strong> ${p.departamentos}</p>
+            <p><strong>Fuente:</strong> ${p.fuente}</p>
+          </div>
+        `);
+      }
+
+    }).addTo(mapa);
+
+    // Checkbox para activar/desactivar
+    document.getElementById('check-fallas').addEventListener('change', e => {
+      if (e.target.checked) capaFallas.addTo(mapa);
+      else mapa.removeLayer(capaFallas);
+    });
+// Checkbox principal del módulo sísmico
+document.getElementById('capa-sismos').addEventListener('change', e => {
+  const checked = e.target.checked;
+
+  // Sincronizar subcapas
+  document.getElementById('check-sismos').checked = checked;
+  document.getElementById('check-zonas').checked = checked;
+  document.getElementById('check-fallas').checked = checked;
+
+  if (checked) {
+    if (capaSismos) capaSismos.addTo(mapa);
+    if (capaZonas) capaZonas.addTo(mapa);
+    if (capaFallas) capaFallas.addTo(mapa);
+  } else {
+    if (capaSismos) mapa.removeLayer(capaSismos);
+    if (capaZonas) mapa.removeLayer(capaZonas);
+    if (capaFallas) mapa.removeLayer(capaFallas);
+  }
+});
+  });

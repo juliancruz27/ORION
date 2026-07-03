@@ -505,3 +505,33 @@ body {
 .detalle-enlace-obs:hover {
   background: rgba(0, 212, 255, 0.08);
 }
+/* ================================
+   SUBCAPAS DEL PANEL
+================================ */
+.subcapa {
+  margin-bottom: 6px;
+}
+
+.subcapa-cabecera {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--texto-secundario);
+  padding: 5px 6px;
+  border-radius: 4px;
+  transition: background 0.15s ease;
+}
+
+.subcapa-cabecera:hover {
+  background: rgba(0, 212, 255, 0.06);
+  color: var(--texto-principal);
+}
+
+.subcapa-cabecera input[type="checkbox"] {
+  accent-color: var(--acento);
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}

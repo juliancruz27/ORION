@@ -1,0 +1,60 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-78.5, 0.8], [-77.6, 0.6], [-76.4, 1.2], [-76.0, 2.2],
+          [-75.5, 3.5], [-75.3, 4.6], [-75.2, 5.5], [-75.6, 6.5],
+          [-76.6, 7.5], [-77.4, 7.9], [-78.2, 7.2], [-78.0, 5.5],
+          [-78.3, 3.5], [-78.5, 2.0], [-78.5, 0.8]
+        ]]
+      },
+      "properties": {
+        "nombre": "Zona de Amenaza Sísmica Alta",
+        "nivel": "alto",
+        "descripcion": "Comprende las tres cordilleras, el Valle del Cauca, el Eje Cafetero, Nariño y el Chocó. Es la zona de mayor liberación de energía sísmica del país por la interacción de las placas Nazca, Caribe y Suramericana.",
+        "departamentos": "Nariño, Cauca, Valle del Cauca, Chocó, Risaralda, Quindío, Caldas, Antioquia",
+        "fuente": "SGC - Estudio General de Amenaza Sísmica de Colombia"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.0, 3.0], [-73.8, 2.8], [-72.6, 3.5], [-72.2, 5.0],
+          [-72.5, 6.5], [-73.0, 8.0], [-73.6, 9.5], [-74.5, 9.0],
+          [-74.8, 7.5], [-74.6, 6.0], [-74.9, 4.5], [-75.0, 3.0]
+        ]]
+      },
+      "properties": {
+        "nombre": "Zona de Amenaza Sísmica Intermedia",
+        "nivel": "medio",
+        "descripcion": "Incluye Bogotá, el altiplano cundiboyacense, Santander y el piedemonte llanero. Presenta sismicidad moderada asociada al sistema de fallas del borde llanero.",
+        "departamentos": "Cundinamarca, Boyacá, Santander, Norte de Santander, Cesar",
+        "fuente": "SGC - Estudio General de Amenaza Sísmica de Colombia"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-72.5, 4.5], [-70.0, 5.0], [-67.5, 4.0], [-67.0, 1.0],
+          [-69.5, -1.5], [-72.0, -2.0], [-73.5, 0.5], [-73.0, 3.0],
+          [-72.5, 4.5]
+        ]]
+      },
+      "properties": {
+        "nombre": "Zona de Amenaza Sísmica Baja",
+        "nivel": "bajo",
+        "descripcion": "Corresponde al Escudo de la Orinoquía y la cuenca amazónica. Zonas estables tectónicamente con muy baja actividad sísmica registrada.",
+        "departamentos": "Meta, Vichada, Guainía, Vaupés, Amazonas, Caquetá",
+        "fuente": "SGC - Estudio General de Amenaza Sísmica de Colombia"
+      }
+    }
+  ]
+}

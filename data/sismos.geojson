@@ -1,0 +1,103 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-76.609, 2.444] },
+      "properties": {
+        "nombre": "Terremoto de Popayán",
+        "fecha": "31 de marzo de 1983",
+        "magnitud": 5.5,
+        "ubicacion": "Popayán, Cauca",
+        "profundidad": "12 km",
+        "victimas": "Aproximadamente 250 muertos",
+        "descripcion": "Sismo superficial que destruyó gran parte del centro histórico de Popayán durante la Semana Santa. Generó un importante cambio en la normativa de construcción sismo-resistente en Colombia.",
+        "fuente": "Servicio Geológico Colombiano (SGC)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-75.681, 4.534] },
+      "properties": {
+        "nombre": "Terremoto del Eje Cafetero",
+        "fecha": "25 de enero de 1999",
+        "magnitud": 6.2,
+        "ubicacion": "Armenia, Quindío",
+        "profundidad": "17 km",
+        "victimas": "Más de 1.185 muertos",
+        "descripcion": "Uno de los sismos más destructivos de Colombia en el siglo XX. Destruyó gran parte de Armenia y afectó severamente a Pereira y otros municipios del Eje Cafetero.",
+        "fuente": "Servicio Geológico Colombiano (SGC)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-76.741, 6.984] },
+      "properties": {
+        "nombre": "Terremoto de Murindó",
+        "fecha": "17 de octubre de 1992",
+        "magnitud": 7.2,
+        "ubicacion": "Murindó, Antioquia",
+        "profundidad": "20 km",
+        "victimas": "Varios muertos y heridos",
+        "descripcion": "Secuencia de sismos de gran magnitud en la región del Atrato medio que generó destrucción severa en comunidades indígenas y afroamericanas del Chocó y Antioquia.",
+        "fuente": "Servicio Geológico Colombiano (SGC)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-78.766, 1.808] },
+      "properties": {
+        "nombre": "Terremoto de Tumaco",
+        "fecha": "12 de diciembre de 1979",
+        "magnitud": 7.9,
+        "ubicacion": "Tumaco, Nariño",
+        "profundidad": "24 km",
+        "victimas": "Aproximadamente 600 muertos",
+        "descripcion": "Sismo de subducción que generó un tsunami en la costa pacífica nariñense. Es uno de los terremotos más fuertes registrados en Colombia.",
+        "fuente": "Servicio Geológico Colombiano (SGC)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-72.505, 7.894] },
+      "properties": {
+        "nombre": "Terremoto de Cúcuta",
+        "fecha": "18 de mayo de 1875",
+        "magnitud": 7.3,
+        "ubicacion": "Cúcuta, Norte de Santander",
+        "profundidad": "15 km",
+        "victimas": "Más de 10.000 muertos",
+        "descripcion": "Uno de los terremotos más devastadores de la historia colombiana. Destruyó completamente la ciudad de Cúcuta y causó daños severos en la región del Táchira venezolano.",
+        "fuente": "Servicio Geológico Colombiano (SGC)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-73.829, 4.327] },
+      "properties": {
+        "nombre": "Sismo de Quetame",
+        "fecha": "24 de mayo de 2008",
+        "magnitud": 5.9,
+        "ubicacion": "Quetame, Cundinamarca",
+        "profundidad": "10 km",
+        "victimas": "12 muertos",
+        "descripcion": "Sismo sentido fuertemente en Bogotá y el piedemonte llanero. Dejó daños estructurales importantes en la región de Quetame.",
+        "fuente": "Servicio Geológico Colombiano (SGC)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-77.281, 1.214] },
+      "properties": {
+        "nombre": "Terremoto de Pasto",
+        "fecha": "9 de abril de 2007",
+        "magnitud": 6.8,
+        "ubicacion": "Pasto, Nariño",
+        "profundidad": "147 km",
+        "victimas": "Sin víctimas mortales",
+        "descripcion": "Sismo profundo de subducción sentido en gran parte del suroccidente colombiano y norte de Ecuador. Su gran profundidad evitó daños mayores.",
+        "fuente": "Servicio Geológico Colombiano (SGC)"
+      }
+    }
+  ]
+}

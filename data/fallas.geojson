@@ -1,0 +1,76 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-77.4, 1.1], [-76.8, 2.0], [-76.0, 3.0], [-75.7, 4.3],
+          [-75.6, 5.2], [-75.5, 6.3], [-75.6, 7.2], [-75.9, 7.9]
+        ]
+      },
+      "properties": {
+        "nombre": "Sistema de Fallas de Romeral",
+        "tipo": "Falla de rumbo",
+        "longitud": "Más de 1.000 km",
+        "descripcion": "Uno de los sistemas de falla más extensos y activos de Colombia. Recorre el país de sur a norte a lo largo de la Cordillera Central, asociado a numerosos sismos históricos.",
+        "departamentos": "Nariño, Cauca, Valle del Cauca, Risaralda, Caldas, Antioquia",
+        "fuente": "Servicio Geológico Colombiano (SGC)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-73.1, 7.1], [-73.4, 8.0], [-73.9, 9.0], [-74.1, 10.2]
+        ]
+      },
+      "properties": {
+        "nombre": "Sistema de Fallas de Bucaramanga - Santa Marta",
+        "tipo": "Falla de rumbo sinestral",
+        "longitud": "Más de 500 km",
+        "descripcion": "Falla de rumbo que atraviesa el oriente del país desde el nido sísmico de Bucaramanga hasta la Sierra Nevada de Santa Marta. Asociada a la sismicidad del nororiente colombiano.",
+        "departamentos": "Santander, Cesar, Magdalena",
+        "fuente": "Servicio Geológico Colombiano (SGC)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-73.9, 2.5], [-73.7, 3.5], [-73.5, 4.5],
+          [-73.0, 5.5], [-72.6, 6.3]
+        ]
+      },
+      "properties": {
+        "nombre": "Falla Frontal de la Cordillera Oriental",
+        "tipo": "Falla inversa",
+        "longitud": "Más de 400 km",
+        "descripcion": "Sistema de fallas inversas que marca el límite entre la Cordillera Oriental y los Llanos Orientales. Generadora de sismicidad superficial significativa en el piedemonte llanero.",
+        "departamentos": "Meta, Casanare, Arauca",
+        "fuente": "Servicio Geológico Colombiano (SGC)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-75.0, 3.2], [-74.8, 4.5],
+          [-74.6, 5.8], [-74.4, 7.0]
+        ]
+      },
+      "properties": {
+        "nombre": "Sistema de Fallas del Magdalena",
+        "tipo": "Falla normal",
+        "longitud": "Más de 300 km",
+        "descripcion": "Conjunto de fallas asociadas al valle del río Magdalena que controla la sismicidad y la configuración estructural del valle interandino central colombiano.",
+        "departamentos": "Tolima, Cundinamarca, Boyacá, Santander",
+        "fuente": "Servicio Geológico Colombiano (SGC)"
+      }
+    }
+  ]
+}
