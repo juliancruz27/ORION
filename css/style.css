@@ -1,0 +1,507 @@
+/* ================================
+   VARIABLES GLOBALES
+   Aquí definimos los colores de ORION
+   Si algún día cambias un color, solo
+   lo cambias aquí y se actualiza en toda
+   la página automáticamente
+================================ */
+:root {
+  --fondo-oscuro: #0a0e1a;
+  --fondo-panel: #111827;
+  --fondo-modulo: #1a2236;
+  --acento: #00d4ff;
+  --texto-principal: #ffffff;
+  --texto-secundario: #8899aa;
+  --borde: rgba(0, 212, 255, 0.15);
+  --alto-topbar: 56px;
+}
+
+/* ================================
+   RESET BÁSICO
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--fondo-oscuro);
+  color: var(--texto-principal);
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ================================
+   BARRA SUPERIOR
+================================ */
+#topbar {
+  height: var(--alto-topbar);
+  background: var(--fondo-panel);
+  border-bottom: 1px solid var(--borde);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  flex-shrink: 0;
+}
+
+.topbar-icono {
+  color: var(--acento);
+  font-size: 20px;
+}
+
+.topbar-texto h1 {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--acento);
+}
+
+.topbar-texto p {
+  font-size: 11px;
+  color: var(--texto-secundario);
+}
+
+/* ================================
+   CONTENEDOR PRINCIPAL
+   panel + mapa lado a lado
+================================ */
+#contenedor {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ================================
+   PANEL LATERAL
+================================ */
+#panel {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--fondo-panel);
+  border-right: 1px solid var(--borde);
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.panel-titulo {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--texto-secundario);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--borde);
+}
+
+/* ================================
+   MÓDULOS DEL PANEL
+================================ */
+.modulo {
+  background: var(--fondo-modulo);
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.modulo-cabecera {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.modulo-cabecera input[type="checkbox"] {
+  accent-color: var(--acento);
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.modulo-nombre {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ================================
+   MAPA
+================================ */
+#mapa {
+  flex: 1;
+}
+/* ================================
+   DETALLE DEL MÓDULO (expandible)
+================================ */
+.modulo-cabecera {
+  /* agregamos space-between para empujar la flecha al lado derecho */
+  justify-content: space-between;
+}
+.modulo-cabecera {
+  cursor: pointer;
+}
+
+.modulo-flecha {
+  font-size: 11px;
+  color: var(--texto-secundario);
+  transition: transform 0.2s ease;
+  margin-left: auto;
+}
+
+/* Cuando el módulo está abierto, la flecha rota 90 grados */
+.modulo.abierto .modulo-flecha {
+  transform: rotate(90deg);
+}
+
+.modulo-detalle {
+  /* por defecto está oculto */
+  display: none;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--borde);
+}
+
+.modulo-detalle p {
+  font-size: 12px;
+  color: var(--texto-secundario);
+  line-height: 1.6;
+}
+
+/* Cuando el módulo está abierto, mostramos el detalle */
+.modulo.abierto .modulo-detalle {
+  display: block;
+}
+/* ================================
+   ÍCONOS DEL MAPA
+================================ */
+.icono-volcan {
+  color: #ff4444;
+  font-size: 20px;
+  text-shadow: 0 0 6px rgba(255, 68, 68, 0.6);
+}
+
+/* ================================
+   POPUP
+================================ */
+.leaflet-popup-content-wrapper {
+  background: #111827;
+  color: #ffffff;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 6px;
+}
+
+.leaflet-popup-tip {
+  background: #111827;
+}
+
+.popup-contenido h3 {
+  color: #00d4ff;
+  font-size: 14px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.popup-contenido p {
+  font-size: 12px;
+  color: #8899aa;
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.popup-contenido strong {
+  color: #ffffff;
+}
+/* ================================
+   LISTA DE ELEMENTOS EN EL PANEL
+================================ */
+.lista-elementos {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.lista-elementos li {
+  font-size: 12px;
+  padding: 7px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--texto-secundario);
+  transition: background 0.15s ease;
+}
+
+.lista-elementos li:hover {
+  background: rgba(0, 212, 255, 0.08);
+  color: var(--texto-principal);
+}
+
+.lista-elementos .elemento-punto {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+/* ================================
+   PANEL DE DETALLE
+================================ */
+.panel-detalle {
+  width: 300px;
+  flex-shrink: 0;
+  background: var(--fondo-panel);
+  border-left: 1px solid var(--borde);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: width 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+}
+
+.panel-detalle.oculto {
+  width: 0;
+  opacity: 0;
+  border-left: none;
+}
+
+.detalle-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid var(--borde);
+  flex-shrink: 0;
+}
+
+.detalle-cabecera h2 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--acento);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#detalle-cerrar {
+  background: none;
+  border: none;
+  color: var(--texto-secundario);
+  font-size: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+#detalle-cerrar:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--texto-principal);
+}
+
+.detalle-cuerpo {
+  padding: 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.detalle-alerta {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid var(--borde);
+  color: var(--texto-secundario);
+}
+
+.detalle-alerta span {
+  font-weight: 700;
+  color: var(--texto-principal);
+}
+
+.detalle-seccion {
+  margin-bottom: 20px;
+}
+
+.detalle-seccion h3 {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--texto-secundario);
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--borde);
+}
+
+.detalle-seccion p {
+  font-size: 13px;
+  color: var(--texto-secundario);
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+
+.detalle-seccion strong {
+  color: var(--texto-principal);
+}
+/* ================================
+   FOTO DEL VOLCÁN
+================================ */
+.detalle-foto-contenedor {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.detalle-foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ================================
+   ENLACE SGC
+================================ */
+.detalle-enlace {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  color: var(--acento);
+  text-decoration: none;
+  font-size: 13px;
+  transition: background 0.15s ease;
+}
+
+.detalle-enlace:hover {
+  background: rgba(0, 212, 255, 0.08);
+}
+/* ================================
+   ÍTEM ACTIVO EN LA LISTA
+================================ */
+.lista-elementos li {
+  font-size: 12px;
+  padding: 7px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--texto-secundario);
+  transition: background 0.15s ease;
+}
+
+.elemento-nombre {
+  flex: 1;
+  color: var(--texto-secundario);
+}
+
+.lista-elementos li:hover {
+  background: rgba(0, 212, 255, 0.08);
+  color: var(--texto-principal);
+}
+
+.lista-elementos li:hover .elemento-nombre {
+  color: var(--texto-principal);
+}
+
+/* ================================
+   BADGE DE ALERTA EN LA LISTA
+================================ */
+.badge-alerta {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 8px;
+  margin-left: auto;
+  letter-spacing: 0.03em;
+}
+
+.badge-rojo     { background: rgba(255,0,0,0.15);    color: #ff4444; }
+.badge-naranja  { background: rgba(255,102,0,0.15);  color: #ff6600; }
+.badge-amarillo { background: rgba(255,204,0,0.15);  color: #ffcc00; }
+.badge-verde    { background: rgba(0,204,68,0.15);   color: #00cc44; }
+/* ================================
+   FILTRO DE ALERTA
+================================ */
+.filtro-alerta {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.filtro-btn {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 8px;
+  border: 1px solid var(--borde);
+  background: none;
+  color: var(--texto-secundario);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filtro-btn:hover {
+  background: rgba(0, 212, 255, 0.08);
+  color: var(--texto-principal);
+}
+
+.filtro-btn.activo-filtro {
+  background: rgba(0, 212, 255, 0.15);
+  color: var(--acento);
+  border-color: var(--acento);
+}
+/* ================================
+   CONTADORES EN CABECERA
+================================ */
+.modulo-contadores {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+  margin-right: 6px;
+}
+
+.contador-badge {
+  font-size: 10px;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contador-naranja  { background: rgba(255,102,0,0.2);  color: #ff6600; }
+.contador-amarillo { background: rgba(255,204,0,0.2);  color: #ffcc00; }
+.contador-verde    { background: rgba(0,204,68,0.2);   color: #00cc44; }
+/* ================================
+   ENLACES OBSERVATORIO
+================================ */
+.detalle-enlace-obs {
+  display: block;
+  font-size: 12px;
+  color: var(--acento);
+  text-decoration: none;
+  margin-top: 6px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--borde);
+  transition: background 0.15s ease;
+}
+
+.detalle-enlace-obs:hover {
+  background: rgba(0, 212, 255, 0.08);
+}

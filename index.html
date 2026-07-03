@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ORION — Amenazas Naturales de Colombia</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Barra superior -->
+  <header id="topbar">
+    <span class="topbar-icono">▲</span>
+    <div class="topbar-texto">
+      <h1>ORION</h1>
+      <p>Observatorio Colombiano de Riesgos y Amenazas Naturales</p>
+    </div>
+  </header>
+
+  <!-- Contenedor principal: panel + mapa lado a lado -->
+  <div id="contenedor">
+
+    <!-- Panel lateral izquierdo -->
+    <aside id="panel">
+
+      <h2 class="panel-titulo">Capas temáticas</h2>
+
+    <!-- Módulo Volcánico -->
+      <div class="modulo">
+        <div class="modulo-cabecera">
+          <input type="checkbox" id="capa-volcanes" checked>
+          <span class="modulo-nombre">🌋 Volcánico</span>
+          <div class="modulo-contadores">
+            <span class="contador-badge contador-naranja" id="count-naranja">0</span>
+            <span class="contador-badge contador-amarillo" id="count-amarillo">0</span>
+            <span class="contador-badge contador-verde" id="count-verde">0</span>
+          </div>
+          <span class="modulo-flecha">▸</span>
+        </div>
+        <div class="modulo-detalle">
+          <p>Volcanes activos y potencialmente activos monitoreados por el SGC.</p>
+          <div class="filtro-alerta">
+            <button class="filtro-btn activo-filtro" data-filtro="todos">Todos</button>
+            <button class="filtro-btn" data-filtro="Naranja">Naranja</button>
+            <button class="filtro-btn" data-filtro="Amarillo">Amarillo</button>
+            <button class="filtro-btn" data-filtro="Verde">Verde</button>
+          </div>
+          <ul id="lista-volcanes" class="lista-elementos"></ul>
+        </div>
+      </div>
+      <!-- Módulo Sísmico -->
+      <div class="modulo">
+        <div class="modulo-cabecera">
+          <input type="checkbox" id="capa-sismos" checked>
+          <span class="modulo-nombre">🌎 Sísmico</span>
+          <span class="modulo-flecha">▸</span>
+        </div>
+        <div class="modulo-detalle">
+          <p>Sismos históricos, zonas sísmicas y fallas geológicas principales.</p>
+        </div>
+      </div>
+
+      <!-- Módulo Movimientos en Masa -->
+      <div class="modulo">
+        <div class="modulo-cabecera">
+          <input type="checkbox" id="capa-masas" checked>
+          <span class="modulo-nombre">⛰️ Movimientos en masa</span>
+          <span class="modulo-flecha">▸</span>
+        </div>
+        <div class="modulo-detalle">
+          <p>Zonas susceptibles a deslizamientos y eventos históricos registrados.</p>
+        </div>
+      </div>
+
+      <!-- Módulo Inundaciones -->
+      <div class="modulo">
+        <div class="modulo-cabecera">
+          <input type="checkbox" id="capa-inundaciones" checked>
+          <span class="modulo-nombre">🌊 Inundaciones</span>
+          <span class="modulo-flecha">▸</span>
+        </div>
+        <div class="modulo-detalle">
+          <p>Cuencas principales y áreas susceptibles a inundación.</p>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- Mapa -->
+    <div id="mapa"></div>
+    <!-- Panel de detalle -->
+    <aside id="panel-detalle" class="panel-detalle oculto">
+
+      <!-- Fotografía -->
+      <div class="detalle-foto-contenedor">
+        <img id="detalle-foto" src="" alt="Fotografía del volcán" class="detalle-foto">
+      </div>
+
+      <!-- Cabecera -->
+      <div class="detalle-cabecera">
+        <h2 id="detalle-nombre">Nombre del volcán</h2>
+        <button id="detalle-cerrar">✕</button>
+      </div>
+
+      <!-- Badge de alerta -->
+      <div class="detalle-alerta" id="detalle-alerta">
+        Nivel de alerta: <span id="detalle-alerta-valor">—</span>
+      </div>
+
+      <div class="detalle-cuerpo">
+
+        <div class="detalle-seccion">
+          <h3>Información general</h3>
+          <p><strong>Ubicación:</strong> <span id="detalle-ubicacion">—</span></p>
+          <p><strong>Altura:</strong> <span id="detalle-altura">—</span></p>
+          <p><strong>Tipo:</strong> <span id="detalle-tipo">—</span></p>
+          <p><strong>Última actividad:</strong> <span id="detalle-actividad">—</span></p>
+          <p><strong>Monitoreo:</strong> <span id="detalle-entidad">—</span></p>
+        </div>
+
+        <div class="detalle-seccion">
+          <h3>Descripción</h3>
+          <p id="detalle-descripcion">—</p>
+        </div>
+
+        <div class="detalle-seccion">
+          <h3>Historia eruptiva</h3>
+          <p id="detalle-historia">—</p>
+        </div>
+
+        <div class="detalle-seccion">
+          <h3>Amenazas asociadas</h3>
+          <p id="detalle-amenazas">—</p>
+        </div>
+
+        <div class="detalle-seccion">
+          <h3>Municipios en riesgo</h3>
+          <p id="detalle-municipios">—</p>
+        </div>
+
+        <div class="detalle-seccion">
+          <h3>Observatorio de monitoreo</h3>
+          <p id="detalle-observatorio">—</p>
+          <a id="detalle-telefono" class="detalle-enlace-obs" href="#">
+            📞 <span id="detalle-telefono-texto">—</span>
+          </a>
+          <a href="https://www.sgc.gov.co/volcanes" target="_blank" class="detalle-enlace-obs">
+            🌐 sgc.gov.co/volcanes
+          </a>
+        </div>
+
+        <div class="detalle-seccion">
+          <a id="detalle-url" href="#" target="_blank" class="detalle-enlace">
+            Ver ficha oficial en el SGC →
+          </a>
+        </div>
+
+      </div>
+    </aside>
+<!-- Panel de detalle (se abre al hacer clic en un volcán) -->
+    <aside id="panel-detalle" class="panel-detalle oculto">
+
+      <!-- Fotografía -->
+      <div class="detalle-foto-contenedor">
+        <img id="detalle-foto" src="" alt="Fotografía del volcán" class="detalle-foto">
+      </div>
+
+      <!-- Cabecera -->
+      <div class="detalle-cabecera">
+        <h2 id="detalle-nombre">Nombre del volcán</h2>
+        <button id="detalle-cerrar">✕</button>
+      </div>
+
+      <!-- Badge de alerta -->
+      <div class="detalle-alerta" id="detalle-alerta">
+        Nivel de alerta: <span id="detalle-alerta-valor">—</span>
+      </div>
+
+      <div class="detalle-cuerpo">
+
+        <div class="detalle-seccion">
+          <h3>Información general</h3>
+          <p><strong>Ubicación:</strong> <span id="detalle-ubicacion">—</span></p>
+          <p><strong>Altura:</strong> <span id="detalle-altura">—</span></p>
+          <p><strong>Tipo:</strong> <span id="detalle-tipo">—</span></p>
+          <p><strong>Última actividad:</strong> <span id="detalle-actividad">—</span></p>
+          <p><strong>Monitoreo:</strong> <span id="detalle-entidad">—</span></p>
+        </div>
+
+        <div class="detalle-seccion">
+          <h3>Descripción</h3>
+          <p id="detalle-descripcion">—</p>
+        </div>
+
+        <div class="detalle-seccion">
+          <h3>Historia eruptiva</h3>
+          <p id="detalle-historia">—</p>
+        </div>
+
+        <div class="detalle-seccion">
+          <h3>Amenazas asociadas</h3>
+          <p id="detalle-amenazas">—</p>
+        </div>
+
+        <div class="detalle-seccion">
+          <h3>Municipios en riesgo</h3>
+          <p id="detalle-municipios">—</p>
+        </div>
+
+        <div class="detalle-seccion">
+          <a id="detalle-url" href="#" target="_blank" class="detalle-enlace">
+            Ver ficha oficial en el SGC →
+          </a>
+        </div>
+
+      </div>
+    </aside>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

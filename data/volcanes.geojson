@@ -1,0 +1,257 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-75.322, 4.895] },
+      "properties": {
+        "nombre": "Nevado del Ruiz",
+         "radio_km": 100,
+        "ubicacion": "Límite Tolima - Caldas, Cordillera Central",
+        "altura": "5.321 m s. n. m.",
+        "tipo": "Estratovolcán glaciar",
+        "alerta": "Naranja",
+        "ultima_actividad": "2024 (actividad continua)",
+        "entidad": "SGC - Observatorio Vulcanológico de Manizales",
+        "telefono": "606 887 9750",
+        "descripcion": "El volcán más activo y peligroso de Colombia. Forma parte del Complejo Volcánico Ruiz-Tolima y es monitoreado de forma prioritaria por el SGC.",
+        "historia": "El 13 de noviembre de 1985 una erupción moderada generó lahares que sepultaron Armero, causando cerca de 25.000 muertes. Es la segunda mayor tragedia volcánica del siglo XX.",
+        "amenazas": "Lahares, caída de ceniza, flujos piroclásticos, avalanchas de lodo hacia los ríos Lagunilla, Chinchiná y Gualí.",
+        "municipios_riesgo": "Manizales, Villamaría, Chinchiná, Honda, Mariquita, Ambalema",
+        "url_sgc": "https://www.sgc.gov.co/volcanes/volcan-nevado-del-ruiz.html",
+        "foto":  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Nevado_del_Ruiz_nos_saludo_4.jpg/960px-Nevado_del_Ruiz_nos_saludo_4.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-77.358, 1.220] },
+      "properties": {
+        "nombre": "Galeras",
+         "radio_km": 15,
+        "ubicacion": "San Juan de Pasto, Nariño",
+        "altura": "4.276 m s. n. m.",
+        "tipo": "Estratovolcán complejo",
+        "alerta": "Amarillo",
+        "ultima_actividad": "2023",
+        "entidad": "SGC - Observatorio Vulcanológico de Pasto",
+        "telefono": "602 729 9000",
+        "descripcion": "Uno de los volcanes más activos y estudiados de Suramérica. Su cercanía a Pasto, con más de 400.000 habitantes, lo convierte en una de las mayores amenazas volcánicas del país.",
+        "historia": "En enero de 1993 una erupción sorpresiva causó la muerte de varios vulcanólogos que se encontraban en el cráter durante una conferencia científica.",
+        "amenazas": "Flujos piroclásticos, caída de ceniza, lahares hacia el río Pasto, ondas de choque.",
+        "municipios_riesgo": "Pasto, Nariño, La Florida, Sandoná, Consacá, Yacuanquer",
+        "url_sgc": "https://www.sgc.gov.co/volcanes/volcan-galeras.html",
+        "foto": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Volc%C3%A1n_Galeras_%28cropped%29.jpg/960px-Volc%C3%A1n_Galeras_%28cropped%29.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-76.398, 2.317] },
+      "properties": {
+        "nombre": "Puracé",
+         "radio_km": 20,
+        "ubicacion": "Cauca, 26 km al sureste de Popayán",
+        "altura": "4.646 m s. n. m.",
+        "tipo": "Estratovolcán",
+        "alerta": "Amarillo",
+        "ultima_actividad": "2022",
+        "entidad": "SGC - Observatorio Vulcanológico de Popayán",
+        "telefono": "602 824 0963",
+        "descripcion": "Volcán más joven de la Cadena Volcánica de los Coconucos. Presenta sismicidad frecuente y emisiones de azufre que dan origen al río Vinagre de alta acidez.",
+        "historia": "Registra erupciones en 1827, 1849, 1869 y la más reciente en 1977. Su actividad fumarólica es permanente.",
+        "amenazas": "Caída de ceniza, flujos de lava, lahares hacia los ríos Vinagre y Cauca.",
+        "municipios_riesgo": "Popayán, Puracé, La Sierra, Sotará",
+        "url_sgc": "https://www.sgc.gov.co/volcanes/volcan-purace.html",
+        "foto": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Volc%C3%A1n_Purac%C3%A9_from_Popay%C3%A1n_-_2006.jpg/960px-Volc%C3%A1n_Purac%C3%A9_from_Popay%C3%A1n_-_2006.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-76.027, 2.927] },
+      "properties": {
+        "nombre": "Nevado del Huila",
+         "radio_km": 80,
+        "ubicacion": "Límite Cauca, Huila y Tolima",
+        "altura": "5.364 m s. n. m.",
+        "tipo": "Estratovolcán glaciar",
+        "alerta": "Verde",
+        "ultima_actividad": "2008",
+        "entidad": "SGC - Observatorio Vulcanológico de Popayán",
+        "telefono": "602 824 0963",
+        "descripcion": "El volcán más alto de Colombia. Su casquete glaciar representa una amenaza significativa por generación de lahares hacia comunidades indígenas Nasa.",
+        "historia": "Tras siglos de aparente inactividad se reactivó en febrero de 2007, generando importantes flujos de lodo en el río Páez.",
+        "amenazas": "Lahares hacia el río Páez, caída de ceniza, deshielo glaciar acelerado.",
+        "municipios_riesgo": "Belalcázar, Inzá, Teruel, La Plata, Nátaga",
+        "url_sgc": "https://www.sgc.gov.co/volcanes/volcan-nevado-del-huila.html",
+        "foto": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Volcan_Huila_9-12-2008_%281%29.jpg/960px-Volcan_Huila_9-12-2008_%281%29.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-75.395, 4.487] },
+      "properties": {
+        "nombre": "Cerro Machín",
+         "radio_km": 50,
+        "ubicacion": "Cajamarca, Tolima",
+        "altura": "2.750 m s. n. m.",
+        "tipo": "Volcán caldera",
+        "alerta": "Amarillo",
+        "ultima_actividad": "Hace ~800 años",
+        "entidad": "SGC - Observatorio Vulcanológico de Manizales",
+        "telefono": "606 887 9750",
+        "descripcion": "Pese a su baja altura, es uno de los volcanes con mayor potencial explosivo de Colombia. Tiene una caldera de 3 km de diámetro con domos de lava en su interior.",
+        "historia": "Su última gran erupción ocurrió hace aproximadamente 800 años. Los estudios indican que sus erupciones pasadas afectaron un radio de más de 100 km.",
+        "amenazas": "Flujos piroclásticos, oleadas piroclásticas, caída de pómez y ceniza en un amplio radio.",
+        "municipios_riesgo": "Cajamarca, Ibagué, Armenia, Calarcá, Salento",
+        "url_sgc": "https://www.sgc.gov.co/volcanes/volcan-cerro-machin.html",
+        "foto": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Machin_Cajamarca.jpg/960px-Machin_Cajamarca.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-75.330, 4.660] },
+      "properties": {
+        "nombre": "Nevado del Tolima",
+         "radio_km": 30,
+        "ubicacion": "Parque Nacional Natural Los Nevados, Tolima",
+        "altura": "5.215 m s. n. m.",
+        "tipo": "Estratovolcán glaciar",
+        "alerta": "Verde",
+        "ultima_actividad": "Siglo XIX",
+        "entidad": "SGC - Observatorio Vulcanológico de Manizales",
+        "telefono": "606 887 9750",
+        "descripcion": "Parte del Complejo Volcánico Ruiz-Tolima. Su cono simétrico cubierto de glaciares es uno de los más reconocibles de Colombia.",
+        "historia": "No registra erupciones en tiempos históricos recientes. Su casquete glaciar amenaza con lahares hacia los ríos Coello y Totare.",
+        "amenazas": "Lahares glaciares, caída de ceniza, flujos de lodo hacia el río Coello.",
+        "municipios_riesgo": "Ibagué, Anzoátegui, Santa Isabel, Murillo",
+        "url_sgc": "https://www.sgc.gov.co/volcanes/volcan-nevado-del-tolima.html",
+        "foto": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NEVADO_TOLIMA-2.jpg/960px-NEVADO_TOLIMA-2.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-75.302, 5.001] },
+      "properties": {
+        "nombre": "Cerro Bravo",
+         "radio_km": 25,
+        "ubicacion": "Límite Tolima - Caldas",
+        "altura": "4.000 m s. n. m.",
+        "tipo": "Estratovolcán",
+        "alerta": "Verde",
+        "ultima_actividad": "Hace varios siglos",
+        "entidad": "SGC - Observatorio Vulcanológico de Manizales",
+        "telefono": "606 887 9750",
+        "descripcion": "Volcán del Complejo Ruiz-Tolima con registro de erupciones explosivas históricas. Presenta baja actividad sísmica en la actualidad.",
+        "historia": "Sus erupciones más recientes documentadas datan de hace varios siglos. Los depósitos de ceniza son evidencia de su pasada actividad explosiva.",
+        "amenazas": "Caída de ceniza, lahares hacia los ríos Samaná y Magdalena.",
+        "municipios_riesgo": "Herveo, Manzanares, Pensilvania, Victoria",
+        "url_sgc": "https://www.sgc.gov.co/volcanes/volcan-cerro-bravo.html",
+        "foto": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Volc%C3%A1n_Cerro_Bravo.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-76.583, 2.117] },
+      "properties": {
+        "nombre": "Sotará",
+         "radio_km": 20,
+        "ubicacion": "Límite Cauca - Huila",
+        "altura": "4.580 m s. n. m.",
+        "tipo": "Estratovolcán",
+        "alerta": "Amarillo",
+        "ultima_actividad": "2022",
+        "entidad": "SGC - Observatorio Vulcanológico de Popayán",
+        "telefono": "602 824 0963",
+        "descripcion": "Complejo volcánico monitoreado por el SGC. Presenta variaciones periódicas en su sismicidad y emisiones de gases.",
+        "historia": "No registra erupciones en tiempos históricos documentados. Su actividad actual se manifiesta principalmente mediante enjambres sísmicos.",
+        "amenazas": "Caída de ceniza, lahares hacia el río Patía.",
+        "municipios_riesgo": "Sotará, San Sebastián, La Vega",
+        "url_sgc": "https://www.sgc.gov.co/volcanes/volcan-sotara.html",
+        "foto": "https://upload.wikimedia.org/wikipedia/commons/7/76/Volc%C3%A1n_sotar%C3%A1.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-77.897, 0.955] },
+      "properties": {
+        "nombre": "Cumbal",
+         "radio_km": 15,
+        "ubicacion": "Municipio de Cumbal, Nariño",
+        "altura": "4.764 m s. n. m.",
+        "tipo": "Estratovolcán complejo",
+        "alerta": "Verde",
+        "ultima_actividad": "Siglo XIX",
+        "entidad": "SGC - Observatorio Vulcanológico de Pasto",
+        "telefono": "602 729 9000",
+        "descripcion": "Complejo volcánico en el extremo suroccidental del país. Presenta actividad fumarólica en varios de sus cráteres.",
+        "historia": "Registra erupciones en el siglo XIX. Actualmente presenta emisiones de gases y actividad sísmica de baja intensidad.",
+        "amenazas": "Caída de ceniza, lahares hacia los ríos Carchi y Guáitara.",
+        "municipios_riesgo": "Cumbal, Guachucal, Sapuyes, Mallama",
+        "url_sgc": "https://www.sgc.gov.co/volcanes/volcan-cumbal.html",
+        "foto": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Cumbal_20071102_001.jpg/1280px-Cumbal_20071102_001.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-77.938, 0.817] },
+      "properties": {
+        "nombre": "Chiles",
+         "radio_km": 15,
+        "ubicacion": "Cumbal, Nariño, frontera con Ecuador",
+        "altura": "4.748 m s. n. m.",
+        "tipo": "Estratovolcán",
+        "alerta": "Amarillo",
+        "ultima_actividad": "2014",
+        "entidad": "SGC - Observatorio Vulcanológico de Pasto",
+        "telefono": "602 729 9000",
+        "descripcion": "Volcán binacional Colombia-Ecuador monitoreado conjuntamente por el SGC y el IG-EPN de Ecuador.",
+        "historia": "En 2013 y 2014 registró miles de sismos asociados a procesos de deformación del terreno, generando alertas en comunidades de ambos países.",
+        "amenazas": "Sismicidad, deformación del terreno, posibles lahares hacia ríos fronterizos.",
+        "municipios_riesgo": "Cumbal, Chiles, Mayasquer (Colombia) / Tulcán (Ecuador)",
+        "url_sgc": "https://www.sgc.gov.co/volcanes/volcan-chiles.html",
+        "foto": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Volc%C3%A1n_Chiles.JPG/960px-Volc%C3%A1n_Chiles.JPG"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-76.917, 1.467] },
+      "properties": {
+        "nombre": "Doña Juana",
+         "radio_km": 20,
+        "ubicacion": "Límite Nariño - Cauca - Putumayo",
+        "altura": "4.150 m s. n. m.",
+        "tipo": "Estratovolcán",
+        "alerta": "Verde",
+        "ultima_actividad": "1899",
+        "entidad": "SGC - Observatorio Vulcanológico de Pasto",
+        "telefono": "602 824 0963",
+        "descripcion": "Complejo volcánico monitoreado dentro de la red del suroccidente colombiano. Presenta baja actividad en la actualidad.",
+        "historia": "Su última erupción registrada ocurrió en 1899, generando flujos de lodo que afectaron el río Juanambú.",
+        "amenazas": "Lahares hacia los ríos Juanambú y Mayo, caída de ceniza.",
+        "municipios_riesgo": "La Cruz, San Bernardo, Tablón de Gómez, Colón",
+        "url_sgc": "https://www.sgc.gov.co/volcanes/volcan-dona-juana.html",
+        "foto": "https://upload.wikimedia.org/wikipedia/commons/e/ed/CV_Dona_Juana.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-77.683, 1.083] },
+      "properties": {
+        "nombre": "Azufral",
+         "radio_km": 15,
+        "ubicacion": "Túquerres, Nariño",
+        "altura": "4.070 m s. n. m.",
+        "tipo": "Volcán caldera",
+        "alerta": "Verde",
+        "ultima_actividad": "Prehistórica",
+        "entidad": "SGC - Observatorio Vulcanológico de Pasto",
+        "telefono": "602 729 9000",
+        "descripcion": "Volcán con caldera y laguna cratérica conocida como Laguna Verde, de color esmeralda por su alta acidez. Presenta actividad fumarólica leve.",
+        "historia": "No registra erupciones en tiempos históricos. Su laguna cratérica es un atractivo turístico y científico del departamento de Nariño.",
+        "amenazas": "Emisiones de gases, posibles lahares hacia el río Sapuyes.",
+        "municipios_riesgo": "Túquerres, Ospina, Guachavez",
+        "url_sgc": "https://www.sgc.gov.co/volcanes/volcan-azufral.html",
+        "foto": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Cr%C3%A1ter_del_volc%C3%A1n_Azufral.jpg/960px-Cr%C3%A1ter_del_volc%C3%A1n_Azufral.jpg"
+      }
+    }
+  ]
+}
