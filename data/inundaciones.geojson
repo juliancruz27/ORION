@@ -1,0 +1,80 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-74.789, 9.245] },
+      "properties": {
+        "nombre": "Inundaciones Bajo Magdalena",
+        "tipo": "Inundación fluvial recurrente",
+        "ubicacion": "Bajo Magdalena, Bolívar y Magdalena",
+        "periodo": "Recurrente en temporadas de lluvias",
+        "area_afectada": "Más de 500.000 hectáreas",
+        "descripcion": "Las planicies de inundación del bajo Magdalena son las más extensas del país. Durante fenómenos de La Niña las inundaciones afectan miles de familias ribereñas.",
+        "municipios": "Magangué, Mompox, Pinillos, Margarita, Hatillo de Loba",
+        "causa": "Desbordamiento del río Magdalena en su tramo bajo durante temporadas de lluvias",
+        "fuente": "IDEAM - Instituto de Hidrología, Meteorología y Estudios Ambientales"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-74.766, 8.395] },
+      "properties": {
+        "nombre": "Inundaciones La Mojana",
+        "tipo": "Inundación por desbordamiento",
+        "ubicacion": "La Mojana, Sucre - Bolívar - Córdoba",
+        "periodo": "Anual en temporada de lluvias",
+        "area_afectada": "Más de 1.000.000 de hectáreas",
+        "descripcion": "Región de humedales entre los ríos Cauca, San Jorge y Magdalena. Una de las zonas más vulnerables a inundaciones del país por su condición de depresión natural.",
+        "municipios": "Majagual, Guaranda, Sucre, Achí, San Jacinto del Cauca",
+        "causa": "Confluencia de los ríos Cauca, San Jorge y Magdalena en una depresión natural",
+        "fuente": "IDEAM - Instituto de Hidrología, Meteorología y Estudios Ambientales"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-75.969, 4.099] },
+      "properties": {
+        "nombre": "Inundaciones Valle del Cauca",
+        "tipo": "Inundación fluvial",
+        "ubicacion": "Valle geográfico del río Cauca",
+        "periodo": "Recurrente en temporadas de lluvias",
+        "area_afectada": "Miles de hectáreas agrícolas",
+        "descripcion": "El valle geográfico del río Cauca presenta amplias zonas susceptibles a inundación. La rotura de jarillones ha generado emergencias graves en el pasado.",
+        "municipios": "Cali, Palmira, Buga, Tulúa, Cartago",
+        "causa": "Desbordamiento del río Cauca y falla de jarillones de protección",
+        "fuente": "IDEAM - Instituto de Hidrología, Meteorología y Estudios Ambientales"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-76.991, 6.258] },
+      "properties": {
+        "nombre": "Inundaciones río Atrato",
+        "tipo": "Inundación fluvial recurrente",
+        "ubicacion": "Cuenca del río Atrato, Chocó",
+        "periodo": "Recurrente todo el año",
+        "area_afectada": "Extensa planicie inundable",
+        "descripcion": "El Atrato es uno de los ríos con mayor caudal del mundo por unidad de área. Las comunidades afrocolombianas e indígenas ribereñas enfrentan inundaciones casi permanentes.",
+        "municipios": "Quibdó, Bojayá, Carmen del Darién, Riosucio",
+        "causa": "Altísima pluviosidad del Pacífico colombiano y desbordamiento del río Atrato",
+        "fuente": "IDEAM - Instituto de Hidrología, Meteorología y Estudios Ambientales"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-71.987, 4.142] },
+      "properties": {
+        "nombre": "Inundaciones Llanos Orientales",
+        "tipo": "Inundación estacional",
+        "ubicacion": "Llanos Orientales, Meta y Casanare",
+        "periodo": "Anual entre mayo y noviembre",
+        "area_afectada": "Millones de hectáreas de sabana",
+        "descripcion": "Las inundaciones estacionales de los Llanos son parte natural del ecosistema de sabana. Sin embargo afectan infraestructura vial, cultivos y comunidades llaneras.",
+        "municipios": "Villavicencio, Yopal, Arauca, Puerto Carreño",
+        "causa": "Lluvias estacionales y desbordamiento de los ríos Meta, Arauca y sus afluentes",
+        "fuente": "IDEAM - Instituto de Hidrología, Meteorología y Estudios Ambientales"
+      }
+    }
+  ]
+}

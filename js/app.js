@@ -430,3 +430,151 @@ document.getElementById('capa-sismos').addEventListener('change', e => {
   }
 });
   });
+  // ================================
+// MÓDULO MOVIMIENTOS EN MASA
+// ================================
+
+let capaMovimientos = null;
+
+function colorMovimiento(tipo) {
+  switch (tipo) {
+    case 'Avenida torrencial':    return '#ff6600';
+    case 'Deslizamiento rotacional': return '#cc4400';
+    case 'Flujo de detritos':    return '#aa3300';
+    case 'Deslizamiento superficial': return '#ff8833';
+    default:                      return '#ff5500';
+  }
+}
+
+fetch('data/movimientos_masa.geojson')
+  .then(r => r.json())
+  .then(datos => {
+
+    capaMovimientos = L.geoJSON(datos, {
+
+      pointToLayer: (feature, latlng) => {
+        const color = colorMovimiento(feature.properties.tipo);
+        const icono = L.divIcon({
+          className: '',
+          html: `<div class="icono-masa" style="background:${color}">◆</div>`,
+          iconSize: [22, 22],
+          iconAnchor: [11, 11]
+        });
+        return L.marker(latlng, { icon: icono });
+      },
+
+      onEachFeature: (feature, layer) => {
+        const p = feature.properties;
+        layer.bindPopup(`
+          <div class="popup-contenido">
+            <h3>${p.nombre}</h3>
+            <p><strong>Fecha:</strong> ${p.fecha}</p>
+            <p><strong>Tipo:</strong> ${p.tipo}</p>
+            <p><strong>Ubicación:</strong> ${p.ubicacion}</p>
+            <p><strong>Víctimas:</strong> ${p.victimas}</p>
+            <p><strong>Causa:</strong> ${p.causa}</p>
+          </div>
+        `);
+      }
+
+    }).addTo(mapa);
+
+    // Lista en el panel
+    const lista = document.getElementById('lista-masas');
+    datos.features.forEach(feature => {
+      const p = feature.properties;
+      const color = colorMovimiento(p.tipo);
+      const [lng, lat] = feature.geometry.coordinates;
+
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <span class="elemento-punto" style="background:${color}"></span>
+        <span class="elemento-nombre">${p.nombre}</span>
+      `;
+
+      li.addEventListener('click', () => {
+        document.querySelectorAll('#lista-masas li').forEach(el => {
+          el.classList.remove('activo');
+        });
+        li.classList.add('activo');
+        mapa.flyTo([lat, lng], 10, { animate: true, duration: 1.5 });
+      });
+
+      lista.appendChild(li);
+    });
+
+    // Checkbox principal
+    document.getElementById('capa-masas').addEventListener('change', e => {
+      if (e.target.checked) capaMovimientos.addTo(mapa);
+      else mapa.removeLayer(capaMovimientos);
+    });
+
+  });
+  // ================================
+// MÓDULO INUNDACIONES
+// ================================
+
+let capaInundaciones = null;
+
+fetch('data/inundaciones.geojson')
+  .then(r => r.json())
+  .then(datos => {
+
+    capaInundaciones = L.geoJSON(datos, {
+
+      pointToLayer: (feature, latlng) => {
+        const icono = L.divIcon({
+          className: '',
+          html: `<div class="icono-inundacion">~</div>`,
+          iconSize: [24, 24],
+          iconAnchor: [12, 12]
+        });
+        return L.marker(latlng, { icon: icono });
+      },
+
+      onEachFeature: (feature, layer) => {
+        const p = feature.properties;
+        layer.bindPopup(`
+          <div class="popup-contenido">
+            <h3>${p.nombre}</h3>
+            <p><strong>Tipo:</strong> ${p.tipo}</p>
+            <p><strong>Ubicación:</strong> ${p.ubicacion}</p>
+            <p><strong>Período:</strong> ${p.periodo}</p>
+            <p><strong>Área afectada:</strong> ${p.area_afectada}</p>
+            <p><strong>Causa:</strong> ${p.causa}</p>
+          </div>
+        `);
+      }
+
+    }).addTo(mapa);
+
+    // Lista en el panel
+    const lista = document.getElementById('lista-inundaciones');
+    datos.features.forEach(feature => {
+      const p = feature.properties;
+      const [lng, lat] = feature.geometry.coordinates;
+
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <span class="elemento-punto" style="background:#2f6f8f"></span>
+        <span class="elemento-nombre">${p.nombre}</span>
+      `;
+
+      li.addEventListener('click', () => {
+        document.querySelectorAll('#lista-inundaciones li').forEach(el => {
+          el.classList.remove('activo');
+        });
+        li.classList.add('activo');
+        mapa.flyTo([lat, lng], 9, { animate: true, duration: 1.5 });
+      });
+
+      lista.appendChild(li);
+    });
+
+    // Checkbox principal
+    document.getElementById('capa-inundaciones').addEventListener('change', e => {
+      if (e.target.checked) capaInundaciones.addTo(mapa);
+      else mapa.removeLayer(capaInundaciones);
+    });
+
+  });
