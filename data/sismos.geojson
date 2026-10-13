@@ -11,7 +11,10 @@
         "ubicacion": "Popayán, Cauca",
         "profundidad": "12 km",
         "victimas": "Aproximadamente 250 muertos",
-        "descripcion": "Sismo superficial que destruyó gran parte del centro histórico de Popayán durante la Semana Santa. Generó un importante cambio en la normativa de construcción sismo-resistente en Colombia.",
+        "descripcion": "Sismo superficial que destruyó gran parte del centro histórico de Popayán durante la Semana Santa. Su hora de ocurrencia, cuando muchas personas estaban en misa, aumentó el número de víctimas.",
+        "impacto": "Destrucción del 60% del centro histórico de Popayán, declarado Patrimonio Nacional. Generó un importante cambio en la normativa de construcción sismo-resistente en Colombia con la creación del Código Colombiano de Construcciones Sismo-Resistentes.",
+        "tipo_falla": "Falla local superficial",
+        "foto": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Popayan_earthquake.jpg/800px-Popayan_earthquake.jpg",
         "fuente": "Servicio Geológico Colombiano (SGC)"
       }
     },
@@ -24,8 +27,11 @@
         "magnitud": 6.2,
         "ubicacion": "Armenia, Quindío",
         "profundidad": "17 km",
-        "victimas": "Más de 1.185 muertos",
-        "descripcion": "Uno de los sismos más destructivos de Colombia en el siglo XX. Destruyó gran parte de Armenia y afectó severamente a Pereira y otros municipios del Eje Cafetero.",
+        "victimas": "Más de 1.185 muertos y 8.500 heridos",
+        "descripcion": "Uno de los sismos más destructivos de Colombia en el siglo XX. Destruyó gran parte de Armenia y afectó severamente a Pereira, Calarcá y otros municipios del Eje Cafetero.",
+        "impacto": "Más de 160.000 personas damnificadas y pérdidas económicas superiores a 1.500 millones de dólares. Motivó la creación del FOREC para la reconstrucción del Eje Cafetero y modernizó el sistema nacional de gestión del riesgo.",
+        "tipo_falla": "Falla de Romeral",
+        "foto": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Armenia_earthquake_1999.jpg/800px-Armenia_earthquake_1999.jpg",
         "fuente": "Servicio Geológico Colombiano (SGC)"
       }
     },
@@ -38,8 +44,11 @@
         "magnitud": 7.2,
         "ubicacion": "Murindó, Antioquia",
         "profundidad": "20 km",
-        "victimas": "Varios muertos y heridos",
+        "victimas": "Varios muertos y cientos de heridos",
         "descripcion": "Secuencia de sismos de gran magnitud en la región del Atrato medio que generó destrucción severa en comunidades indígenas y afroamericanas del Chocó y Antioquia.",
+        "impacto": "Destrucción total de los municipios de Murindó y Vigía del Fuerte. Generó cambios permanentes en el paisaje por deslizamientos masivos asociados al sismo.",
+        "tipo_falla": "Sistema de fallas del Atrato",
+        "foto": "",
         "fuente": "Servicio Geológico Colombiano (SGC)"
       }
     },
@@ -47,13 +56,16 @@
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [-78.766, 1.808] },
       "properties": {
-        "nombre": "Terremoto de Tumaco",
+        "nombre": "Terremoto y Tsunami de Tumaco",
         "fecha": "12 de diciembre de 1979",
         "magnitud": 7.9,
         "ubicacion": "Tumaco, Nariño",
         "profundidad": "24 km",
         "victimas": "Aproximadamente 600 muertos",
-        "descripcion": "Sismo de subducción que generó un tsunami en la costa pacífica nariñense. Es uno de los terremotos más fuertes registrados en Colombia.",
+        "descripcion": "Sismo de subducción en la zona de convergencia de las placas Nazca y Suramericana que generó un tsunami destructivo en la costa pacífica nariñense.",
+        "impacto": "El tsunami generado arrasó varias islas y comunidades costeras de Tumaco. Es el evento tsunamigénico más importante registrado en Colombia y referente para los sistemas de alerta temprana del Pacífico.",
+        "tipo_falla": "Zona de subducción Nazca - Suramericana",
+        "foto": "",
         "fuente": "Servicio Geológico Colombiano (SGC)"
       }
     },
@@ -68,6 +80,9 @@
         "profundidad": "15 km",
         "victimas": "Más de 10.000 muertos",
         "descripcion": "Uno de los terremotos más devastadores de la historia colombiana. Destruyó completamente la ciudad de Cúcuta y causó daños severos en la región del Táchira venezolano.",
+        "impacto": "La destrucción total de Cúcuta obligó a su reconstrucción completa. Es considerado el terremoto más mortífero en la historia de Colombia y uno de los más graves de Suramérica en el siglo XIX.",
+        "tipo_falla": "Sistema de fallas de Boconó",
+        "foto": "",
         "fuente": "Servicio Geológico Colombiano (SGC)"
       }
     },
@@ -80,8 +95,11 @@
         "magnitud": 5.9,
         "ubicacion": "Quetame, Cundinamarca",
         "profundidad": "10 km",
-        "victimas": "12 muertos",
-        "descripcion": "Sismo sentido fuertemente en Bogotá y el piedemonte llanero. Dejó daños estructurales importantes en la región de Quetame.",
+        "victimas": "12 muertos y más de 50 heridos",
+        "descripcion": "Sismo sentido fuertemente en Bogotá y el piedemonte llanero. Dejó daños estructurales importantes en la región de Quetame y generó deslizamientos en la vía Bogotá-Villavicencio.",
+        "impacto": "Cierre prolongado de la vía Bogotá-Villavicencio por deslizamientos. Daños en infraestructura educativa y viviendas en Quetame y municipios vecinos.",
+        "tipo_falla": "Falla del Borde Llanero",
+        "foto": "",
         "fuente": "Servicio Geológico Colombiano (SGC)"
       }
     },
@@ -94,8 +112,11 @@
         "magnitud": 6.8,
         "ubicacion": "Pasto, Nariño",
         "profundidad": "147 km",
-        "victimas": "Sin víctimas mortales",
-        "descripcion": "Sismo profundo de subducción sentido en gran parte del suroccidente colombiano y norte de Ecuador. Su gran profundidad evitó daños mayores.",
+        "victimas": "Sin víctimas mortales directas",
+        "descripcion": "Sismo profundo de subducción sentido en gran parte del suroccidente colombiano y norte de Ecuador. Su gran profundidad evitó daños estructurales mayores.",
+        "impacto": "Pánico generalizado en Pasto y municipios cercanos. Leve daño en algunas estructuras antiguas. Demostró la importancia del monitoreo sísmico en la región andina.",
+        "tipo_falla": "Zona de subducción Nazca - Suramericana",
+        "foto": "",
         "fuente": "Servicio Geológico Colombiano (SGC)"
       }
     }

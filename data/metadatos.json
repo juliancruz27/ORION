@@ -1,0 +1,44 @@
+[
+  {
+    "id": "volcanes",
+    "nombre": "Volcánico",
+    "fuente": "Servicio Geológico Colombiano (SGC)",
+    "url": "https://www.sgc.gov.co/volcanes",
+    "actualizacion": null
+  },
+  {
+    "id": "sismos",
+    "nombre": "Sismos históricos",
+    "fuente": "Servicio Geológico Colombiano (SGC)",
+    "url": "https://www.sgc.gov.co/sismos",
+    "actualizacion": null
+  },
+  {
+    "id": "zonas_sismicas",
+    "nombre": "Zonas sísmicas",
+    "fuente": "SGC - Estudio General de Amenaza Sísmica de Colombia",
+    "url": "https://www.sgc.gov.co/",
+    "actualizacion": null
+  },
+  {
+    "id": "fallas",
+    "nombre": "Fallas geológicas",
+    "fuente": "Servicio Geológico Colombiano (SGC)",
+    "url": "https://www.sgc.gov.co/",
+    "actualizacion": null
+  },
+  {
+    "id": "movimientos_masa",
+    "nombre": "Movimientos en masa",
+    "fuente": "UNGRD - Unidad Nacional para la Gestión del Riesgo de Desastres",
+    "url": "https://portal.gestiondelriesgo.gov.co/",
+    "actualizacion": null
+  },
+  {
+    "id": "inundaciones",
+    "nombre": "Inundaciones",
+    "fuente": "IDEAM - Instituto de Hidrología, Meteorología y Estudios Ambientales",
+    "url": "https://www.ideam.gov.co/",
+    "actualizacion": null
+  }
+]

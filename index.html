@@ -12,22 +12,61 @@
 
   <!-- Barra superior -->
   <header id="topbar">
-    <span class="topbar-icono">▲</span>
+    <div class="topbar-icono">▲</div>
     <div class="topbar-texto">
       <h1>ORION</h1>
       <p>Observatorio Colombiano de Riesgos y Amenazas Naturales</p>
     </div>
   </header>
 
-  <!-- Contenedor principal: panel + mapa lado a lado -->
+  <!-- Contenedor principal -->
   <div id="contenedor">
 
     <!-- Panel lateral izquierdo -->
     <aside id="panel">
 
+      <div class="buscador-eventos">
+        <label for="busqueda-eventos">Buscar eventos</label>
+        <div class="buscador-campo">
+          <input id="busqueda-eventos" type="search" placeholder="Nombre o municipio" autocomplete="off">
+          <button id="limpiar-busqueda" type="button" aria-label="Limpiar búsqueda" title="Limpiar búsqueda" disabled>×</button>
+        </div>
+        <ul id="resultados-busqueda" class="resultados-busqueda" aria-label="Resultados de búsqueda" aria-live="polite" hidden></ul>
+      </div>
+
+      <details class="filtros-eventos">
+        <summary>Filtros</summary>
+        <div class="filtros-campos">
+          <label for="filtro-tipo">Tipo de amenaza</label>
+          <select id="filtro-tipo">
+            <option value="">Todas las amenazas</option>
+            <option value="Volcánico">Volcánico</option>
+            <option value="Sísmico">Sísmico</option>
+            <option value="Movimientos en masa">Movimientos en masa</option>
+            <option value="Inundaciones">Inundaciones</option>
+          </select>
+
+          <label for="filtro-alerta">Nivel de alerta</label>
+          <select id="filtro-alerta">
+            <option value="">Todos los niveles</option>
+            <option value="Rojo">Rojo</option>
+            <option value="Naranja">Naranja</option>
+            <option value="Amarillo">Amarillo</option>
+            <option value="Verde">Verde</option>
+          </select>
+          <p class="ayuda-filtro">El nivel de alerta está disponible para volcanes.</p>
+
+          <label for="filtro-ubicacion">Ubicación</label>
+          <input id="filtro-ubicacion" type="search" placeholder="Municipio o departamento" autocomplete="off">
+
+          <p id="conteo-eventos" class="conteo-eventos" aria-live="polite">Cargando eventos...</p>
+          <button id="limpiar-filtros" class="limpiar-filtros" type="button">Restablecer filtros</button>
+        </div>
+      </details>
+
       <h2 class="panel-titulo">Capas temáticas</h2>
 
-    <!-- Módulo Volcánico -->
+      <!-- Módulo Volcánico -->
       <div class="modulo">
         <div class="modulo-cabecera">
           <input type="checkbox" id="capa-volcanes" checked>
@@ -40,7 +79,7 @@
           <span class="modulo-flecha">▸</span>
         </div>
         <div class="modulo-detalle">
-          <p>Volcanes activos y potencialmente activos monitoreados por el SGC.</p>
+          <p>Volcanes activos y potencialmente activos monitoreados por el Servicio geológico colombiano-SGC.</p>
           <div class="filtro-alerta">
             <button class="filtro-btn activo-filtro" data-filtro="todos">Todos</button>
             <button class="filtro-btn" data-filtro="Naranja">Naranja</button>
@@ -50,6 +89,7 @@
           <ul id="lista-volcanes" class="lista-elementos"></ul>
         </div>
       </div>
+
       <!-- Módulo Sísmico -->
       <div class="modulo">
         <div class="modulo-cabecera">
@@ -59,32 +99,28 @@
         </div>
         <div class="modulo-detalle">
           <p>Sismos históricos, zonas de amenaza y fallas geológicas principales.</p>
-
-          <!-- Sublistas por tipo de capa -->
           <div class="subcapa">
             <label class="subcapa-cabecera">
               <input type="checkbox" id="check-sismos" checked>
               <span>● Sismos históricos</span>
             </label>
           </div>
-
           <div class="subcapa">
             <label class="subcapa-cabecera">
               <input type="checkbox" id="check-zonas" checked>
               <span>▦ Zonas sísmicas</span>
             </label>
           </div>
-
           <div class="subcapa">
             <label class="subcapa-cabecera">
               <input type="checkbox" id="check-fallas" checked>
               <span>╱ Fallas geológicas</span>
             </label>
           </div>
-
           <ul id="lista-sismos" class="lista-elementos"></ul>
         </div>
       </div>
+
       <!-- Módulo Movimientos en Masa -->
       <div class="modulo">
         <div class="modulo-cabecera">
@@ -111,137 +147,169 @@
         </div>
       </div>
 
+      <section class="fuentes-datos" aria-labelledby="fuentes-titulo">
+        <h2 id="fuentes-titulo">Fuentes y actualización</h2>
+        <ul id="lista-fuentes" class="lista-fuentes" aria-live="polite">
+          <li>Cargando fuentes...</li>
+        </ul>
+        <p class="fuentes-nota">Las fechas de los eventos no se indican cuándo se actualizaron los datos.</p>
+      </section>
+
     </aside>
 
     <!-- Mapa -->
     <div id="mapa"></div>
+
     <!-- Panel de detalle -->
     <aside id="panel-detalle" class="panel-detalle oculto">
 
-      <!-- Fotografía -->
       <div class="detalle-foto-contenedor">
-        <img id="detalle-foto" src="" alt="Fotografía del volcán" class="detalle-foto">
+        <img id="detalle-foto" src="" alt="" class="detalle-foto">
       </div>
 
-      <!-- Cabecera -->
       <div class="detalle-cabecera">
-        <h2 id="detalle-nombre">Nombre del volcán</h2>
+        <h2 id="detalle-nombre">—</h2>
         <button id="detalle-cerrar">✕</button>
       </div>
 
-      <!-- Badge de alerta -->
       <div class="detalle-alerta" id="detalle-alerta">
-        Nivel de alerta: <span id="detalle-alerta-valor">—</span>
+        <span id="detalle-badge-label">Nivel:</span>
+        <span id="detalle-alerta-valor">—</span>
       </div>
 
       <div class="detalle-cuerpo">
 
-        <div class="detalle-seccion">
-          <h3>Información general</h3>
-          <p><strong>Ubicación:</strong> <span id="detalle-ubicacion">—</span></p>
-          <p><strong>Altura:</strong> <span id="detalle-altura">—</span></p>
-          <p><strong>Tipo:</strong> <span id="detalle-tipo">—</span></p>
-          <p><strong>Última actividad:</strong> <span id="detalle-actividad">—</span></p>
-          <p><strong>Monitoreo:</strong> <span id="detalle-entidad">—</span></p>
+        <!-- BLOQUE VOLCÁNICO -->
+        <div id="detalle-bloque-volcan">
+          <div class="detalle-seccion">
+            <h3>Información general</h3>
+            <p><strong>Ubicación:</strong> <span id="detalle-ubicacion">—</span></p>
+            <p><strong>Altura:</strong> <span id="detalle-altura">—</span></p>
+            <p><strong>Tipo:</strong> <span id="detalle-tipo">—</span></p>
+            <p><strong>Última actividad:</strong> <span id="detalle-actividad">—</span></p>
+            <p><strong>Monitoreo:</strong> <span id="detalle-entidad">—</span></p>
+          </div>
+          <div class="detalle-seccion">
+            <h3>Descripción</h3>
+            <p id="detalle-descripcion">—</p>
+          </div>
+          <div class="detalle-seccion">
+            <h3>Historia eruptiva</h3>
+            <p id="detalle-historia">—</p>
+          </div>
+          <div class="detalle-seccion">
+            <h3>Amenazas asociadas</h3>
+            <p id="detalle-amenazas">—</p>
+          </div>
+          <div class="detalle-seccion">
+            <h3>Municipios en riesgo</h3>
+            <p id="detalle-municipios">—</p>
+          </div>
+          <div class="detalle-seccion">
+            <h3>Observatorio de monitoreo</h3>
+            <p id="detalle-observatorio">—</p>
+            <a id="detalle-telefono" class="detalle-enlace-obs" href="#">
+              📞 <span id="detalle-telefono-texto">—</span>
+            </a>
+            <a href="https://www.sgc.gov.co/volcanes" target="_blank" class="detalle-enlace-obs">
+              🌐 sgc.gov.co/volcanes
+            </a>
+          </div>
+          <div class="detalle-seccion">
+            <a id="detalle-url" href="#" target="_blank" class="detalle-enlace">
+              Ver ficha oficial en el SGC →
+            </a>
+          </div>
         </div>
 
-        <div class="detalle-seccion">
-          <h3>Descripción</h3>
-          <p id="detalle-descripcion">—</p>
+        <!-- BLOQUE SÍSMICO -->
+        <div id="detalle-bloque-sismico" class="oculto">
+          <div class="detalle-seccion">
+            <h3>Información general</h3>
+            <p><strong>Fecha:</strong> <span id="detalle-fecha">—</span></p>
+            <p><strong>Ubicación:</strong> <span id="detalle-ubicacion-s">—</span></p>
+            <p><strong>Profundidad:</strong> <span id="detalle-profundidad">—</span></p>
+            <p><strong>Tipo de falla:</strong> <span id="detalle-falla">—</span></p>
+            <p><strong>Víctimas:</strong> <span id="detalle-victimas">—</span></p>
+          </div>
+          <div class="detalle-seccion">
+            <h3>Descripción</h3>
+            <p id="detalle-descripcion-s">—</p>
+          </div>
+          <div class="detalle-seccion">
+            <h3>Impacto y consecuencias</h3>
+            <p id="detalle-impacto">—</p>
+          </div>
+          <div class="detalle-seccion">
+            <a href="https://www.sgc.gov.co/sismos" target="_blank" class="detalle-enlace">
+              Ver información en el SGC →
+            </a>
+          </div>
         </div>
 
-        <div class="detalle-seccion">
-          <h3>Historia eruptiva</h3>
-          <p id="detalle-historia">—</p>
+        <!-- BLOQUE MOVIMIENTOS EN MASA -->
+        <div id="detalle-bloque-masas" class="oculto">
+          <div class="detalle-seccion">
+            <h3>Información general</h3>
+            <p><strong>Fecha:</strong> <span id="detalle-fecha-m">—</span></p>
+            <p><strong>Ubicación:</strong> <span id="detalle-ubicacion-m">—</span></p>
+            <p><strong>Tipo:</strong> <span id="detalle-tipo-m">—</span></p>
+            <p><strong>Víctimas:</strong> <span id="detalle-victimas-m">—</span></p>
+            <p><strong>Ríos afectados:</strong> <span id="detalle-rios-m">—</span></p>
+          </div>
+          <div class="detalle-seccion">
+            <h3>Descripción</h3>
+            <p id="detalle-descripcion-m">—</p>
+          </div>
+          <div class="detalle-seccion">
+            <h3>Causa</h3>
+            <p id="detalle-causa-m">—</p>
+          </div>
+          <div class="detalle-seccion">
+            <h3>Fuente</h3>
+            <p id="detalle-fuente-m">—</p>
+          </div>
+          <div class="detalle-seccion">
+            <a href="https://portal.gestiondelriesgo.gov.co/" target="_blank" class="detalle-enlace">
+              Ver información en la UNGRD →
+            </a>
+          </div>
         </div>
 
-        <div class="detalle-seccion">
-          <h3>Amenazas asociadas</h3>
-          <p id="detalle-amenazas">—</p>
-        </div>
-
-        <div class="detalle-seccion">
-          <h3>Municipios en riesgo</h3>
-          <p id="detalle-municipios">—</p>
-        </div>
-
-        <div class="detalle-seccion">
-          <h3>Observatorio de monitoreo</h3>
-          <p id="detalle-observatorio">—</p>
-          <a id="detalle-telefono" class="detalle-enlace-obs" href="#">
-            📞 <span id="detalle-telefono-texto">—</span>
-          </a>
-          <a href="https://www.sgc.gov.co/volcanes" target="_blank" class="detalle-enlace-obs">
-            🌐 sgc.gov.co/volcanes
-          </a>
-        </div>
-
-        <div class="detalle-seccion">
-          <a id="detalle-url" href="#" target="_blank" class="detalle-enlace">
-            Ver ficha oficial en el SGC →
-          </a>
+        <!-- BLOQUE INUNDACIONES -->
+        <div id="detalle-bloque-inundaciones" class="oculto">
+          <div class="detalle-seccion">
+            <h3>Información general</h3>
+            <p><strong>Tipo:</strong> <span id="detalle-tipo-i">—</span></p>
+            <p><strong>Ubicación:</strong> <span id="detalle-ubicacion-i">—</span></p>
+            <p><strong>Período:</strong> <span id="detalle-periodo-i">—</span></p>
+            <p><strong>Área afectada:</strong> <span id="detalle-area-i">—</span></p>
+            <p><strong>Municipios:</strong> <span id="detalle-municipios-i">—</span></p>
+          </div>
+          <div class="detalle-seccion">
+            <h3>Descripción</h3>
+            <p id="detalle-descripcion-i">—</p>
+          </div>
+          <div class="detalle-seccion">
+            <h3>Causa</h3>
+            <p id="detalle-causa-i">—</p>
+          </div>
+          <div class="detalle-seccion">
+            <h3>Fuente</h3>
+            <p id="detalle-fuente-i">—</p>
+          </div>
+          <div class="detalle-seccion">
+            <a href="https://www.ideam.gov.co/" target="_blank" class="detalle-enlace">
+              Ver información en el IDEAM →
+            </a>
+          </div>
         </div>
 
       </div>
     </aside>
-<!-- Panel de detalle (se abre al hacer clic en un volcán) -->
-    <aside id="panel-detalle" class="panel-detalle oculto">
 
-      <!-- Fotografía -->
-      <div class="detalle-foto-contenedor">
-        <img id="detalle-foto" src="" alt="Fotografía del volcán" class="detalle-foto">
-      </div>
+  </div>
 
-      <!-- Cabecera -->
-      <div class="detalle-cabecera">
-        <h2 id="detalle-nombre">Nombre del volcán</h2>
-        <button id="detalle-cerrar">✕</button>
-      </div>
-
-      <!-- Badge de alerta -->
-      <div class="detalle-alerta" id="detalle-alerta">
-        Nivel de alerta: <span id="detalle-alerta-valor">—</span>
-      </div>
-
-      <div class="detalle-cuerpo">
-
-        <div class="detalle-seccion">
-          <h3>Información general</h3>
-          <p><strong>Ubicación:</strong> <span id="detalle-ubicacion">—</span></p>
-          <p><strong>Altura:</strong> <span id="detalle-altura">—</span></p>
-          <p><strong>Tipo:</strong> <span id="detalle-tipo">—</span></p>
-          <p><strong>Última actividad:</strong> <span id="detalle-actividad">—</span></p>
-          <p><strong>Monitoreo:</strong> <span id="detalle-entidad">—</span></p>
-        </div>
-
-        <div class="detalle-seccion">
-          <h3>Descripción</h3>
-          <p id="detalle-descripcion">—</p>
-        </div>
-
-        <div class="detalle-seccion">
-          <h3>Historia eruptiva</h3>
-          <p id="detalle-historia">—</p>
-        </div>
-
-        <div class="detalle-seccion">
-          <h3>Amenazas asociadas</h3>
-          <p id="detalle-amenazas">—</p>
-        </div>
-
-        <div class="detalle-seccion">
-          <h3>Municipios en riesgo</h3>
-          <p id="detalle-municipios">—</p>
-        </div>
-
-        <div class="detalle-seccion">
-          <a id="detalle-url" href="#" target="_blank" class="detalle-enlace">
-            Ver ficha oficial en el SGC →
-          </a>
-        </div>
-
-      </div>
-    </aside>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="js/app.js"></script>
 
