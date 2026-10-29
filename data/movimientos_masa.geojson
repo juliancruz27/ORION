@@ -9,11 +9,14 @@
         "fecha": "1 de abril de 2017",
         "tipo": "Avenida torrencial",
         "ubicacion": "Mocoa, Putumayo",
-        "victimas": "Más de 330 muertos",
-        "descripcion": "Crecida súbita de los ríos Mocoa, Mulato y Sangoyaco que arrasó varios barrios de Mocoa. Una de las avalanchas más devastadoras de la historia reciente de Colombia.",
+        "victimas": "Más de 330 muertos y 400 desaparecidos",
         "causa": "Lluvias intensas acumuladas durante varias horas sobre la cuenca alta del río Mocoa",
         "rios_afectados": "Mocoa, Mulato, Sangoyaco",
-        "fuente": "UNGRD - Unidad Nacional para la Gestión del Riesgo de Desastres"
+        "descripcion": "Crecida súbita de los ríos Mocoa, Mulato y Sangoyaco que arrasó varios barrios de Mocoa en la madrugada del 1 de abril de 2017. Una de las avalanchas más devastadoras de la historia reciente de Colombia.",
+        "impacto": "Más de 17 barrios destruidos, 1.100 viviendas afectadas y pérdidas por más de 1 billón de pesos. El evento evidenció la necesidad de ordenamiento territorial en zonas de ladera y riberas.",
+        "municipios": "Mocoa",
+        "fuente": "UNGRD - Unidad Nacional para la Gestión del Riesgo de Desastres",
+        "foto": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Mocoa_floods_2017.jpg/800px-Mocoa_floods_2017.jpg"
       }
     },
     {
@@ -24,11 +27,14 @@
         "fecha": "18 de mayo de 2015",
         "tipo": "Avenida torrencial",
         "ubicacion": "Salgar, Antioquia",
-        "victimas": "Más de 100 muertos",
-        "descripcion": "Avenida torrencial en la quebrada La Liboriana que arrasó parte del casco urbano de Salgar tras lluvias intensas, dejando alrededor de 100 muertos y decenas de desaparecidos.",
+        "victimas": "Más de 100 muertos y 20 desaparecidos",
         "causa": "Lluvias intensas y deforestación en la cuenca de la quebrada La Liboriana",
         "rios_afectados": "Quebrada La Liboriana",
-        "fuente": "UNGRD - Unidad Nacional para la Gestión del Riesgo de Desastres"
+        "descripcion": "Avenida torrencial en la quebrada La Liboriana que arrasó parte del casco urbano de Salgar en horas de la madrugada, cuando la mayoría de habitantes dormía.",
+        "impacto": "Destrucción parcial del casco urbano de Salgar. El evento impulsó la implementación de sistemas de alerta temprana comunitarios en Antioquia.",
+        "municipios": "Salgar",
+        "fuente": "UNGRD - Unidad Nacional para la Gestión del Riesgo de Desastres",
+        "foto": ""
       }
     },
     {
@@ -40,10 +46,13 @@
         "tipo": "Deslizamiento rotacional",
         "ubicacion": "Gramalote, Norte de Santander",
         "victimas": "Sin muertos, evacuación total del municipio",
-        "descripcion": "Movimiento en masa de gran magnitud que obligó al traslado total del casco urbano del municipio. Asociado al fenómeno de La Niña 2010-2011.",
-        "causa": "Saturación del suelo por lluvias prolongadas del fenómeno La Niña",
+        "causa": "Saturación del suelo por lluvias prolongadas del fenómeno La Niña 2010-2011",
         "rios_afectados": "Río Peralonso",
-        "fuente": "UNGRD - Unidad Nacional para la Gestión del Riesgo de Desastres"
+        "descripcion": "Movimiento en masa de gran magnitud que obligó al traslado total del casco urbano del municipio de Gramalote, el único caso documentado en Colombia de reubicación completa de un municipio por este tipo de amenaza.",
+        "impacto": "Traslado total de más de 3.000 habitantes. El nuevo municipio fue reconstruido en un sitio seguro con apoyo del gobierno nacional.",
+        "municipios": "Gramalote",
+        "fuente": "UNGRD - Unidad Nacional para la Gestión del Riesgo de Desastres",
+        "foto": ""
       }
     },
     {
@@ -55,25 +64,31 @@
         "tipo": "Flujo de detritos",
         "ubicacion": "Páez, Cauca",
         "victimas": "Más de 1.000 muertos",
-        "descripcion": "Sismo de magnitud 6.4 desencadenó múltiples deslizamientos en la cuenca del río Páez, generando flujos de lodo que arrasaron comunidades indígenas Nasa.",
-        "causa": "Sismo de magnitud 6.4 en el volcán Nevado del Huila combinado con lluvias intensas",
+        "causa": "Sismo de magnitud 6.4 en el Nevado del Huila combinado con lluvias intensas",
         "rios_afectados": "Río Páez",
-        "fuente": "UNGRD - Unidad Nacional para la Gestión del Riesgo de Desastres"
+        "descripcion": "Sismo de magnitud 6.4 desencadenó múltiples deslizamientos en la cuenca del río Páez, generando flujos de lodo que arrasaron comunidades indígenas Nasa en los municipios de Páez y Belalcázar.",
+        "impacto": "Destrucción de más de 20 comunidades indígenas Nasa. El evento generó una profunda reflexión sobre la relación entre amenazas sísmicas y movimientos en masa en zonas volcánicas.",
+        "municipios": "Páez, Belalcázar, Inzá",
+        "fuente": "UNGRD - Unidad Nacional para la Gestión del Riesgo de Desastres",
+        "foto": ""
       }
     },
     {
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [-75.517, 5.069] },
       "properties": {
-        "nombre": "Deslizamientos recurrentes de Manizales",
+        "nombre": "Deslizamientos de Manizales",
         "fecha": "Recurrente en temporadas de lluvia",
         "tipo": "Deslizamiento superficial",
         "ubicacion": "Manizales, Caldas",
         "victimas": "Múltiples eventos con víctimas anuales",
-        "descripcion": "Ciudad construida sobre laderas de alta pendiente con suelos volcánicos. Los deslizamientos son recurrentes en temporadas de lluvia afectando barrios en zonas de ladera.",
         "causa": "Pendientes pronunciadas, suelos volcánicos saturados y urbanización en zonas de riesgo",
         "rios_afectados": "Ríos Chinchiná y Olivares",
-        "fuente": "UNGRD - Unidad Nacional para la Gestión del Riesgo de Desastres"
+        "descripcion": "Ciudad construida sobre laderas de alta pendiente con suelos volcánicos. Los deslizamientos son recurrentes en temporadas de lluvia, afectando barrios en zonas de ladera con alta densidad poblacional.",
+        "impacto": "Manizales cuenta con uno de los sistemas de gestión del riesgo más desarrollados de Colombia, con alertas tempranas, planes de evacuación y restricciones de construcción en zonas de ladera.",
+        "municipios": "Manizales",
+        "fuente": "UNGRD - Unidad Nacional para la Gestión del Riesgo de Desastres",
+        "foto": ""
       }
     }
   ]

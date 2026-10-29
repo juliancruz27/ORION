@@ -1010,3 +1010,116 @@ body {
 .oculto {
   display: none !important;
 }
+/* ================================
+   PANTALLA DE INICIO
+================================ */
+#pantalla-inicio {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--fondo-oscuro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  transition: opacity 0.5s ease;
+}
+
+#pantalla-inicio.oculto {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+.inicio-contenido {
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.inicio-icono {
+  font-size: 48px;
+  color: var(--acento);
+  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
+  margin-bottom: 8px;
+}
+
+.inicio-titulo {
+  font-size: clamp(56px, 12vw, 96px);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--texto-principal);
+  line-height: 1;
+}
+
+.inicio-subtitulo {
+  font-size: clamp(14px, 2.5vw, 18px);
+  color: var(--texto-secundario);
+  line-height: 1.5;
+}
+
+.inicio-eslogan {
+  font-size: 13px;
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin-top: -4px;
+}
+
+.btn-entrar {
+  margin-top: 8px;
+  padding: 14px 32px;
+  background: var(--acento);
+  color: var(--fondo-oscuro);
+  border: none;
+  border-radius: var(--radio);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+.btn-entrar:hover {
+  background: #00eaff;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.25);
+}
+
+.btn-flecha {
+  transition: transform 0.2s ease;
+}
+
+.btn-entrar:hover .btn-flecha {
+  transform: translateX(4px);
+}
+
+.inicio-fuentes {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  font-size: 11px;
+  color: var(--texto-terciario);
+  letter-spacing: 0.08em;
+}
+#app-contenido {
+  opacity: 0;
+  transition: opacity 0.8s ease 0.4s;
+}
+
+#app-contenido.visible {
+  opacity: 1;
+}
+#app-contenido {
+  opacity: 0;
+  transition: opacity 0.8s ease 0.4s;
+}
+
+#app-contenido.visible {
+  opacity: 1;
+}

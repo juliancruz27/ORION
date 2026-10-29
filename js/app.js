@@ -1,4 +1,18 @@
 // ================================
+// PANTALLA DE INICIO
+// ================================
+document.getElementById('btn-entrar').addEventListener('click', () => {
+  const pantalla = document.getElementById('pantalla-inicio');
+  const appContenido = document.getElementById('app-contenido');
+
+  pantalla.classList.add('oculto');
+
+  setTimeout(() => {
+    pantalla.style.display = 'none';
+    appContenido.classList.add('visible');
+  }, 400);
+});
+// ================================
 // MAPA BASE
 // ================================
 const mapa = L.map('mapa').setView([4.6, -74.1], 6);
@@ -41,6 +55,7 @@ controlLeyenda.onAdd = () => {
   return contenedor;
 };
 controlLeyenda.addTo(mapa);
+
 
 // ================================
 // BÚSQUEDA DE EVENTOS
@@ -135,11 +150,7 @@ function aplicarFiltrosEventos() {
   resultadosBusqueda.forEach(resultado => {
     const coincide = coincideConFiltros(resultado);
     resultado.elemento.style.display = coincide ? 'flex' : 'none';
-
-    if (coincide) {
-      cantidad += 1;
-    }
-
+    if (coincide) cantidad += 1;
     if (coincide && categoriaHabilitada(resultado)) resultado.capa.addTo(mapa);
     else mapa.removeLayer(resultado.capa);
   });
@@ -172,7 +183,6 @@ function activarCapaDeBusqueda(categoria) {
     aplicarFiltrosEventos();
     return;
   }
-
   if (categoria === 'Sísmico') {
     document.getElementById('capa-sismos').checked = true;
     document.getElementById('check-sismos').checked = true;
@@ -180,14 +190,12 @@ function activarCapaDeBusqueda(categoria) {
     aplicarFiltrosEventos();
     return;
   }
-
   if (categoria === 'Movimientos en masa') {
     document.getElementById('capa-masas').checked = true;
     if (capaMovimientos) capaMovimientos.addTo(mapa);
     aplicarFiltrosEventos();
     return;
   }
-
   document.getElementById('capa-inundaciones').checked = true;
   if (capaInundaciones) capaInundaciones.addTo(mapa);
   aplicarFiltrosEventos();
@@ -217,32 +225,27 @@ document.getElementById('limpiar-filtros').addEventListener('click', () => {
   aplicarFiltrosEventos();
 });
 
+
 // ================================
 // FUENTES Y ACTUALIZACIÓN DE DATOS
 // ================================
 function formatearFechaActualizacion(fecha) {
   if (!fecha) return 'No informada';
-
   const valor = new Date(`${fecha}T00:00:00`);
   if (Number.isNaN(valor.getTime())) return 'Fecha no válida';
-
   return new Intl.DateTimeFormat('es-CO', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
+    day: 'numeric', month: 'long', year: 'numeric'
   }).format(valor);
 }
 
 function mostrarFuentes(metadatos) {
   const lista = document.getElementById('lista-fuentes');
   lista.replaceChildren();
-
   metadatos.forEach(capa => {
     const elemento = document.createElement('li');
     const nombre = document.createElement('strong');
     const enlace = document.createElement('a');
     const actualizacion = document.createElement('span');
-
     nombre.className = 'fuente-nombre';
     nombre.textContent = capa.nombre;
     enlace.className = 'fuente-enlace';
@@ -252,7 +255,6 @@ function mostrarFuentes(metadatos) {
     enlace.textContent = capa.fuente;
     actualizacion.className = 'fuente-actualizacion';
     actualizacion.textContent = `Actualización: ${formatearFechaActualizacion(capa.actualizacion)}`;
-
     elemento.append(nombre, enlace, actualizacion);
     lista.appendChild(elemento);
   });
@@ -274,7 +276,7 @@ fetch('data/metadatos.json')
 
 
 // ================================
-// COLORES SEGÚN NIVEL DE ALERTA
+// COLORES
 // ================================
 function colorAlerta(nivel) {
   switch (nivel) {
@@ -317,17 +319,17 @@ function colorMovimiento(tipo) {
 
 
 // ================================
-// PANEL DE DETALLE
+// PANEL DE DETALLE — BASE
 // ================================
 const panelDetalle = document.getElementById('panel-detalle');
 let capaActiva = null;
 let circuloActivo = null;
 
 function mostrarBloqueDetalle(idBloque, badgeLabel) {
-  document.getElementById('detalle-bloque-volcan').classList.add('oculto');
-  document.getElementById('detalle-bloque-sismico').classList.add('oculto');
-  document.getElementById('detalle-bloque-masas').classList.add('oculto');
-  document.getElementById('detalle-bloque-inundaciones').classList.add('oculto');
+  ['detalle-bloque-volcan', 'detalle-bloque-sismico',
+   'detalle-bloque-masas', 'detalle-bloque-inundaciones'].forEach(id => {
+    document.getElementById(id).classList.add('oculto');
+  });
   document.getElementById(idBloque).classList.remove('oculto');
   document.getElementById('detalle-badge-label').textContent = badgeLabel;
 }
@@ -361,7 +363,6 @@ function cerrarDetalle() {
   const capa = capaActiva;
   capaActiva = null;
   if (capa) capa.closePopup();
-
   mostrarBloqueDetalle('detalle-bloque-volcan', 'Nivel de alerta:');
 }
 
@@ -373,7 +374,6 @@ document.getElementById('detalle-cerrar').onclick = () => cerrarDetalle();
 // ================================
 function abrirDetalle(p, layer) {
   capaActiva = layer;
-
   mostrarBloqueDetalle('detalle-bloque-volcan', 'Nivel de alerta:');
 
   document.getElementById('detalle-nombre').textContent = p.nombre;
@@ -389,22 +389,17 @@ function abrirDetalle(p, layer) {
   document.getElementById('detalle-amenazas').textContent = p.amenazas || '—';
   document.getElementById('detalle-municipios').textContent = p.municipios_riesgo || '—';
 
-  // Teléfono
   const telefono = p.telefono || '601 220 0200';
   document.getElementById('detalle-telefono-texto').textContent = telefono;
   document.getElementById('detalle-telefono').href = 'tel:' + telefono.replace(/\s/g, '');
 
-  // Badge de color
   const badge = document.getElementById('detalle-alerta');
   badge.style.borderColor = colorBadge(p.alerta);
   badge.style.color = colorBadge(p.alerta);
 
   aplicarFoto(p.foto, `Fotografía de ${p.nombre}`);
-
-  // Enlace SGC
   document.getElementById('detalle-url').href = 'https://www.sgc.gov.co/volcanes';
 
-  // Círculo de influencia
   if (circuloActivo) mapa.removeLayer(circuloActivo);
   const latlng = layer.getLatLng();
   circuloActivo = L.circle([latlng.lat, latlng.lng], {
@@ -425,13 +420,11 @@ function abrirDetalle(p, layer) {
 // ================================
 function abrirDetalleSismico(p, layer) {
   capaActiva = layer;
-
   mostrarBloqueDetalle('detalle-bloque-sismico', 'Magnitud:');
 
   document.getElementById('detalle-nombre').textContent = p.nombre;
   document.getElementById('detalle-alerta-valor').textContent = `M ${p.magnitud} Mw`;
 
-  // Badge color según magnitud
   const badge = document.getElementById('detalle-alerta');
   let colorMag;
   if (p.magnitud >= 7)      colorMag = '#ff4444';
@@ -442,14 +435,11 @@ function abrirDetalleSismico(p, layer) {
 
   aplicarFoto(p.foto, `Fotografía de ${p.nombre}`);
 
-  // Información general
   document.getElementById('detalle-fecha').textContent = p.fecha || '—';
   document.getElementById('detalle-ubicacion-s').textContent = p.ubicacion || '—';
   document.getElementById('detalle-profundidad').textContent = p.profundidad || '—';
   document.getElementById('detalle-falla').textContent = p.tipo_falla || '—';
   document.getElementById('detalle-victimas').textContent = p.victimas || '—';
-
-  // Descripción e impacto
   document.getElementById('detalle-descripcion-s').textContent = p.descripcion || '—';
   document.getElementById('detalle-impacto').textContent = p.impacto || '—';
 
@@ -462,7 +452,6 @@ function abrirDetalleSismico(p, layer) {
 // ================================
 function abrirDetalleMasas(p, layer) {
   capaActiva = layer;
-
   mostrarBloqueDetalle('detalle-bloque-masas', 'Tipo:');
 
   document.getElementById('detalle-nombre').textContent = p.nombre;
@@ -476,13 +465,14 @@ function abrirDetalleMasas(p, layer) {
   aplicarFoto(p.foto, `Fotografía de ${p.nombre}`);
 
   document.getElementById('detalle-fecha-m').textContent = p.fecha || '—';
-  document.getElementById('detalle-ubicacion-m').textContent = p.ubicacion || '—';
   document.getElementById('detalle-tipo-m').textContent = p.tipo || '—';
+  document.getElementById('detalle-ubicacion-m').textContent = p.ubicacion || '—';
   document.getElementById('detalle-victimas-m').textContent = p.victimas || '—';
   document.getElementById('detalle-rios-m').textContent = p.rios_afectados || '—';
+  document.getElementById('detalle-municipios-m').textContent = p.municipios || '—';
   document.getElementById('detalle-descripcion-m').textContent = p.descripcion || '—';
   document.getElementById('detalle-causa-m').textContent = p.causa || '—';
-  document.getElementById('detalle-fuente-m').textContent = p.fuente || '—';
+  document.getElementById('detalle-impacto-m').textContent = p.impacto || '—';
 
   panelDetalle.classList.remove('oculto');
 }
@@ -493,7 +483,6 @@ function abrirDetalleMasas(p, layer) {
 // ================================
 function abrirDetalleInundaciones(p, layer) {
   capaActiva = layer;
-
   mostrarBloqueDetalle('detalle-bloque-inundaciones', 'Tipo:');
 
   document.getElementById('detalle-nombre').textContent = p.nombre;
@@ -528,7 +517,6 @@ fetch('data/volcanes.geojson')
   .then(datos => {
 
     L.geoJSON(datos, {
-
       pointToLayer: (feature, latlng) => {
         const color = colorAlerta(feature.properties.alerta);
         const icono = L.divIcon({
@@ -539,11 +527,9 @@ fetch('data/volcanes.geojson')
         });
         return L.marker(latlng, { icon: icono });
       },
-
       onEachFeature: (feature, layer) => {
         const p = feature.properties;
         capasVolcanes[p.nombre] = layer;
-
         layer.bindPopup(`
           <div class="popup-contenido">
             <h3>${p.nombre}</h3>
@@ -552,19 +538,15 @@ fetch('data/volcanes.geojson')
             <p><strong>Nivel de alerta:</strong> ${p.alerta}</p>
           </div>
         `);
-
         layer.on('popupclose', () => cerrarDetalle());
         layer.on('click', () => abrirDetalle(p, layer));
       }
-
     }).addTo(mapa);
 
-    // Contadores
     document.getElementById('count-naranja').textContent  = datos.features.filter(f => f.properties.alerta === 'Naranja').length;
     document.getElementById('count-amarillo').textContent = datos.features.filter(f => f.properties.alerta === 'Amarillo').length;
     document.getElementById('count-verde').textContent    = datos.features.filter(f => f.properties.alerta === 'Verde').length;
 
-    // Lista del panel
     const lista = document.getElementById('lista-volcanes');
     datos.features.forEach(feature => {
       const p = feature.properties;
@@ -591,7 +573,6 @@ fetch('data/volcanes.geojson')
       lista.appendChild(li);
     });
 
-    // Checkbox activar/desactivar
     document.getElementById('capa-volcanes').addEventListener('change', e => {
       datos.features.forEach(feature => {
         const layer = capasVolcanes[feature.properties.nombre];
@@ -601,7 +582,6 @@ fetch('data/volcanes.geojson')
       aplicarFiltrosEventos();
     });
 
-    // Filtro por alerta
     document.querySelectorAll('.filtro-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         filtroAlerta.value = btn.dataset.filtro === 'todos' ? '' : btn.dataset.filtro;
@@ -619,6 +599,8 @@ document.querySelectorAll('.modulo').forEach(modulo => {
   const cabecera = modulo.querySelector('.modulo-cabecera');
   cabecera.addEventListener('click', () => modulo.classList.toggle('abierto'));
 });
+
+
 // ================================
 // CARGA DE SISMOS HISTÓRICOS
 // ================================
@@ -629,7 +611,6 @@ fetch('data/sismos.geojson')
   .then(datos => {
 
     capaSismos = L.geoJSON(datos, {
-
       pointToLayer: (feature, latlng) => {
         const mag = feature.properties.magnitud;
         return L.circleMarker(latlng, {
@@ -640,7 +621,6 @@ fetch('data/sismos.geojson')
           weight: 1.5
         });
       },
-
       onEachFeature: (feature, layer) => {
         const p = feature.properties;
         layer.bindPopup(`
@@ -656,10 +636,8 @@ fetch('data/sismos.geojson')
         layer.on('popupclose', () => cerrarDetalle());
         layer.on('click', () => abrirDetalleSismico(p, layer));
       }
-
     }).addTo(mapa);
 
-    // Guardamos referencia a cada capa por coordenadas
     const capasSismos = {};
     capaSismos.eachLayer(layer => {
       const latlng = layer.getLatLng();
@@ -667,7 +645,6 @@ fetch('data/sismos.geojson')
       capasSismos[key] = layer;
     });
 
-    // Lista del panel
     const lista = document.getElementById('lista-sismos');
     datos.features.forEach(feature => {
       const p = feature.properties;
@@ -696,7 +673,6 @@ fetch('data/sismos.geojson')
       lista.appendChild(li);
     });
 
-    // Checkbox subcapa
     document.getElementById('check-sismos').addEventListener('change', e => {
       if (e.target.checked) capaSismos.addTo(mapa);
       else mapa.removeLayer(capaSismos);
@@ -704,6 +680,8 @@ fetch('data/sismos.geojson')
     });
 
   });
+
+
 // ================================
 // CARGA DE ZONAS SÍSMICAS
 // ================================
@@ -775,7 +753,6 @@ fetch('data/fallas.geojson')
       else mapa.removeLayer(capaFallas);
     });
 
-    // Checkbox principal módulo sísmico
     document.getElementById('capa-sismos').addEventListener('change', e => {
       const checked = e.target.checked;
       document.getElementById('check-sismos').checked = checked;
@@ -806,7 +783,6 @@ fetch('data/movimientos_masa.geojson')
   .then(datos => {
 
     capaMovimientos = L.geoJSON(datos, {
-
       pointToLayer: (feature, latlng) => {
         const color = colorMovimiento(feature.properties.tipo);
         const icono = L.divIcon({
@@ -817,7 +793,6 @@ fetch('data/movimientos_masa.geojson')
         });
         return L.marker(latlng, { icon: icono });
       },
-
       onEachFeature: (feature, layer) => {
         const p = feature.properties;
         layer.bindPopup(`
@@ -833,7 +808,6 @@ fetch('data/movimientos_masa.geojson')
         layer.on('popupclose', () => cerrarDetalle());
         layer.on('click', () => abrirDetalleMasas(p, layer));
       }
-
     }).addTo(mapa);
 
     const capasMasas = {};
@@ -887,7 +861,6 @@ fetch('data/inundaciones.geojson')
   .then(datos => {
 
     capaInundaciones = L.geoJSON(datos, {
-
       pointToLayer: (feature, latlng) => {
         const icono = L.divIcon({
           className: '',
@@ -897,7 +870,6 @@ fetch('data/inundaciones.geojson')
         });
         return L.marker(latlng, { icon: icono });
       },
-
       onEachFeature: (feature, layer) => {
         const p = feature.properties;
         layer.bindPopup(`
@@ -913,7 +885,6 @@ fetch('data/inundaciones.geojson')
         layer.on('popupclose', () => cerrarDetalle());
         layer.on('click', () => abrirDetalleInundaciones(p, layer));
       }
-
     }).addTo(mapa);
 
     const capasInundaciones = {};
