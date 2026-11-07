@@ -144,6 +144,7 @@ body {
 #contenedor {
   display: flex;
   flex: 1;
+  min-height: 0;
   overflow: hidden;
 }
 
@@ -153,6 +154,7 @@ body {
 #panel {
   width: var(--ancho-panel);
   flex-shrink: 0;
+  min-height: 0;
   background: var(--fondo-panel);
   border-right: 1px solid var(--borde);
   overflow-y: auto;
@@ -1017,6 +1019,7 @@ body {
   position: fixed;
   inset: 0;
   z-index: 9999;
+  overflow-y: auto;
   background: var(--fondo-oscuro);
   display: flex;
   align-items: center;
@@ -1108,14 +1111,10 @@ body {
   letter-spacing: 0.08em;
 }
 #app-contenido {
-  opacity: 0;
-  transition: opacity 0.8s ease 0.4s;
-}
-
-#app-contenido.visible {
-  opacity: 1;
-}
-#app-contenido {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
   opacity: 0;
   transition: opacity 0.8s ease 0.4s;
 }
