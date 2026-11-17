@@ -1,0 +1,44 @@
+name: Validar y actualizar sismos SGC
+
+on:
+  schedule:
+    - cron: "0 12 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: actualizar-sismos-sgc
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Ejecutar pruebas de actualización
+        run: python -m unittest discover -s tests
+
+      - name: Validar fuente y actualizar sismos
+        run: python scripts/actualizar_sismos_sgc.py
+
+      - name: Guardar datos actualizados
+        run: |
+          if git diff --quiet -- data/sismos.geojson data/metadatos.json; then
+            echo "No hay datos nuevos que guardar."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/sismos.geojson data/metadatos.json
+          git commit -m "Actualiza sismos desde el SGC" -m "Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>"
+          git push

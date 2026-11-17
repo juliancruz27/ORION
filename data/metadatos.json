@@ -10,7 +10,7 @@
     "id": "sismos",
     "nombre": "Sismos históricos",
     "fuente": "Servicio Geológico Colombiano (SGC)",
-    "url": "https://www.sgc.gov.co/sismos",
+    "url": "https://srvags.sgc.gov.co/arcgis/rest/services/catalogo_sismos/catalogo_de_sismos_2/FeatureServer/0",
     "actualizacion": null
   },
   {

@@ -61,8 +61,22 @@ git clone https://github.com/juliancruz27/orion.git
 
 > También puedes usar la extensión **Live Server** de VS Code para desarrollo local.
 
+## Actualización automática de sismos
 
- ##  Fuentes de datos
+La acción de GitHub [Validar y actualizar sismos SGC](.github/workflows/actualizar-datos-sgc.yml)
+consulta semanalmente el servicio ArcGIS REST del SGC y también se puede ejecutar
+manualmente desde la pestaña **Actions**. Conserva los sismos históricos curados,
+incorpora los eventos recientes que superen las validaciones y registra la fecha
+de actualización en `data/metadatos.json`. Si la fuente falla, no contiene datos
+recientes, devuelve datos incompletos o excede el límite de consulta, la tarea no
+reemplaza los archivos existentes.
+
+**Limitación actual:** el servicio consultado es un catálogo histórico y su evento
+más reciente disponible llega a 2020-12-30. Por tanto, la validación programada
+no publicará datos nuevos hasta que el servicio ofrezca eventos dentro de los
+últimos 30 días. No se debe interpretar este proceso como monitoreo en tiempo real.
+
+ ## Fuentes de datos
 
 - **[Servicio Geológico Colombiano (SGC)](https://www.sgc.gov.co)** — Volcanes, sismos y fallas geológicas
 - **[UNGRD](https://portal.gestiondelriesgo.gov.co)** — Movimientos en masa y gestión del riesgo
