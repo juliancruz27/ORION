@@ -17,9 +17,30 @@ document.getElementById('btn-entrar').addEventListener('click', () => {
 // ================================
 const mapa = L.map('mapa').setView([4.6, -74.1], 6);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(mapa);
+const atribucionEsri = 'Tiles &copy; <a href="https://www.esri.com/">Esri</a>, HERE, Garmin, <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, and the GIS user community';
+const mapaClaro = L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
+  { attribution: atribucionEsri }
+);
+const mapaOscuro = L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+  { attribution: atribucionEsri }
+);
+const mapaTopografico = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, SRTM | &copy; <a href="https://opentopomap.org">OpenTopoMap</a>'
+});
+const mapaSatelital = L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+  { attribution: atribucionEsri }
+);
+
+mapaClaro.addTo(mapa);
+L.control.layers({
+  'Claro': mapaClaro,
+  'Oscuro': mapaOscuro,
+  'Topográfico': mapaTopografico,
+  'Satelital': mapaSatelital
+}, null, { position: 'topright', collapsed: true }).addTo(mapa);
 
 const controlLeyenda = L.control({ position: 'bottomright' });
 controlLeyenda.onAdd = () => {

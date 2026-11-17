@@ -734,6 +734,36 @@ body {
   color: var(--acento) !important;
 }
 
+.leaflet-control-layers {
+  border: 1px solid var(--borde) !important;
+  border-radius: var(--radio) !important;
+  background: var(--fondo-panel) !important;
+  color: var(--texto-principal) !important;
+  box-shadow: var(--sombra-panel) !important;
+}
+
+.leaflet-control-layers-expanded {
+  padding: 8px 10px;
+}
+
+.leaflet-control-layers-toggle {
+  border-radius: var(--radio) !important;
+  background-color: var(--fondo-panel) !important;
+}
+
+.leaflet-control-layers-base label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 4px 0;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.leaflet-control-layers-selector {
+  accent-color: var(--acento);
+}
+
 .leaflet-control-attribution {
   background: rgba(8,12,20,0.8) !important;
   color: var(--texto-terciario) !important;

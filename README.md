@@ -61,6 +61,13 @@ git clone https://github.com/juliancruz27/orion.git
 
 > También puedes usar la extensión **Live Server** de VS Code para desarrollo local.
 
+## Mapas base
+
+El visor permite alternar entre mapas claro (predeterminado), oscuro, topográfico
+y satelital desde el selector desplegable ubicado sobre la leyenda, en la esquina
+inferior derecha. Los mapas base de Esri seleccionados no requieren API key; cada
+proveedor conserva su atribución visible en el mapa.
+
 ## Actualización automática de sismos
 
 La acción de GitHub [Validar y actualizar sismos SGC](.github/workflows/actualizar-datos-sgc.yml)
